@@ -1,0 +1,90 @@
+name: Fetch Proxy List
+
+on:
+  schedule:
+    # 每小时执行一次
+    - cron: '0 * * * *'
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install Puppeteer
+        run: npm install puppeteer
+      
+      - name: Fetch proxy list
+        run: |
+          cat << 'EOF' > fetch.js
+          const puppeteer = require('puppeteer');
+          const fs = require('fs');
+
+          (async () => {
+            console.log('启动浏览器...');
+            const browser = await puppeteer.launch({
+              headless: 'new',
+              args: ['--no-sandbox', '--disable-setuid-sandbox']
+            });
+            
+            const page = await browser.newPage();
+            
+            // 设置 User-Agent
+            await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+            
+            console.log('访问代理列表 API...');
+            
+            try {
+              // 访问页面，等待 Cloudflare 验证
+              await page.goto('https://ipdb.api.030101.xyz/?type=bestproxy&country=true', {
+                waitUntil: 'networkidle0',
+                timeout: 60000
+              });
+              
+              // 等待额外时间确保验证完成
+              await new Promise(r => setTimeout(r, 5000));
+              
+              // 获取页面内容
+              const content = await page.evaluate(() => document.body.innerText);
+              
+              // 验证内容格式
+              const lines = content.trim().split('\n').filter(line => {
+                return /^\d+\.\d+\.\d+\.\d+#\w+$/.test(line.trim());
+              });
+              
+              if (lines.length > 0) {
+                fs.writeFileSync('proxies.txt', lines.join('\n'));
+                console.log(`成功获取 ${lines.length} 个代理`);
+                console.log('前5个:', lines.slice(0, 5));
+              } else {
+                console.log('未获取到有效代理，保留原文件');
+                console.log('页面内容预览:', content.substring(0, 500));
+              }
+            } catch (error) {
+              console.error('获取失败:', error.message);
+            }
+            
+            await browser.close();
+          })();
+          EOF
+          node fetch.js
+      
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add proxies.txt
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update proxy list $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            git push
+          fi
