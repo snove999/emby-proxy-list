@@ -1,9 +1,9 @@
-      - name: Install Playwright
+- name: Install Playwright
         run: |
           npm install playwright
           npx playwright install chromium
       
-      - name: Fetch with Playwright
+- name: Fetch with Playwright
         run: |
           cat << 'SCRIPT' > fetch.js
           const { chromium } = require('playwright');
