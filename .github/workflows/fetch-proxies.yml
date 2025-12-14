@@ -23,13 +23,18 @@ jobs:
         run: npm install puppeteer
       
       - name: Fetch proxy list
+        # 关键：在仓库根目录运行，输出到根目录
+        working-directory: ${{ github.workspace }}
         run: |
           cat << 'EOF' > fetch.js
           const puppeteer = require('puppeteer');
           const fs = require('fs');
+          const path = require('path');
 
           (async () => {
             console.log('启动浏览器...');
+            console.log('当前工作目录:', process.cwd());
+            
             const browser = await puppeteer.launch({
               headless: 'new',
               args: ['--no-sandbox', '--disable-setuid-sandbox']
@@ -37,35 +42,34 @@ jobs:
             
             const page = await browser.newPage();
             
-            // 设置 User-Agent
             await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
             
             console.log('访问代理列表 API...');
             
             try {
-              // 访问页面，等待 Cloudflare 验证
               await page.goto('https://ipdb.api.030101.xyz/?type=bestproxy&country=true', {
                 waitUntil: 'networkidle0',
                 timeout: 60000
               });
               
-              // 等待额外时间确保验证完成
+              // 等待 Cloudflare 验证
               await new Promise(r => setTimeout(r, 5000));
               
-              // 获取页面内容
               const content = await page.evaluate(() => document.body.innerText);
               
-              // 验证内容格式
               const lines = content.trim().split('\n').filter(line => {
                 return /^\d+\.\d+\.\d+\.\d+#\w+$/.test(line.trim());
               });
               
               if (lines.length > 0) {
-                fs.writeFileSync('proxies.txt', lines.join('\n'));
-                console.log(`成功获取 ${lines.length} 个代理`);
+                // 保存到仓库根目录的 proxies.txt
+                const outputPath = path.join(process.cwd(), 'proxies.txt');
+                fs.writeFileSync(outputPath, lines.join('\n'));
+                console.log('文件保存位置:', outputPath);
+                console.log('成功获取', lines.length, '个代理');
                 console.log('前10个:', lines.slice(0, 10));
               } else {
-                console.log('未获取到有效代理，保留原文件');
+                console.log('未获取到有效代理');
                 console.log('页面内容预览:', content.substring(0, 500));
               }
             } catch (error) {
@@ -76,12 +80,24 @@ jobs:
           })();
           EOF
           node fetch.js
+          
+          # 验证文件位置
+          echo "=== 检查文件 ==="
+          ls -la proxies.txt || echo "proxies.txt 不存在"
+          echo "=== 文件内容前10行 ==="
+          head -10 proxies.txt || echo "无法读取"
       
-      - name: Commit and push if changed
+      - name: Commit and push
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          
+          # 确保添加根目录的文件
           git add proxies.txt
+          
+          # 清理临时文件
+          rm -f fetch.js
+          
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
