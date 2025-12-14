@@ -1,49 +1,180 @@
-- name: Install Playwright
+name: Fetch Proxy List
+
+on:
+  schedule:
+    # 每小时执行
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install Playwright
         run: |
           npm install playwright
           npx playwright install chromium
       
-- name: Fetch with Playwright
+      - name: Fetch with Playwright
         run: |
           cat << 'SCRIPT' > fetch.js
           const { chromium } = require('playwright');
           const fs = require('fs');
 
-          (async () => {
-            const browser = await chromium.launch({ headless: true });
-            const context = await browser.newContext({
-              userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+          const MAX_RETRIES = 3;
+
+          async function fetchProxies(attempt = 1) {
+            console.log(`\n========== 第 ${attempt} 次尝试 ==========`);
+            
+            const browser = await chromium.launch({ 
+              headless: true,
+              args: ['--no-sandbox', '--disable-setuid-sandbox']
             });
             
-            const page = await context.newPage();
-            
-            console.log('访问页面...');
-            await page.goto('https://ipdb.api.030101.xyz/?type=bestproxy&country=true');
-            
-            // Playwright 的智能等待
-            console.log('等待页面稳定...');
-            await page.waitForLoadState('networkidle', { timeout: 60000 });
-            
-            // 额外等待确保内容加载
-            await page.waitForTimeout(5000);
-            
-            const content = await page.textContent('body');
-            console.log('内容长度:', content.length);
-            
-            const lines = content.trim().split('\n').filter(line => 
-              /^\d+\.\d+\.\d+\.\d+#\w+$/.test(line.trim())
-            );
-            
-            if (lines.length > 0) {
-              fs.writeFileSync('proxies.txt', lines.join('\n'));
-              console.log('✅ 成功获取', lines.length, '个代理');
-            } else {
-              console.log('❌ 未获取到代理');
-              console.log('页面内容:', content.substring(0, 500));
+            try {
+              const context = await browser.newContext({
+                userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                viewport: { width: 1920, height: 1080 },
+                locale: 'en-US'
+              });
+              
+              const page = await context.newPage();
+              
+              console.log('访问页面...');
+              await page.goto('https://ipdb.api.030101.xyz/?type=bestproxy&country=true', {
+                waitUntil: 'domcontentloaded',
+                timeout: 30000
+              });
+              
+              // 检查页面标题，判断是否在 Cloudflare 验证
+              let title = await page.title();
+              console.log('初始页面标题:', title);
+              
+              // 如果在验证页面，等待验证完成
+              if (title.includes('moment') || title.includes('Cloudflare') || title.includes('Just')) {
+                console.log('检测到 Cloudflare 验证，等待中...');
+                
+                // 等待标题变化或超时
+                try {
+                  await page.waitForFunction(
+                    () => !document.title.includes('moment') && !document.title.includes('Just'),
+                    { timeout: 30000 }
+                  );
+                } catch (e) {
+                  console.log('等待标题变化超时，继续尝试...');
+                }
+              }
+              
+              // Playwright 的智能等待
+              console.log('等待页面稳定...');
+              try {
+                await page.waitForLoadState('networkidle', { timeout: 30000 });
+              } catch (e) {
+                console.log('网络未完全空闲，继续处理...');
+              }
+              
+              // 额外等待确保内容加载
+              await page.waitForTimeout(5000);
+              
+              // 再次检查标题
+              title = await page.title();
+              console.log('最终页面标题:', title);
+              
+              // 获取页面内容
+              const content = await page.textContent('body');
+              console.log('内容长度:', content.length);
+              console.log('内容预览:', content.substring(0, 300));
+              
+              // 解析代理列表
+              const lines = content.trim().split('\n').filter(line => {
+                const trimmed = line.trim();
+                return /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}#[A-Z]{2}$/i.test(trimmed);
+              });
+              
+              console.log('解析到代理数量:', lines.length);
+              
+              if (lines.length >= 5) {
+                fs.writeFileSync('proxies.txt', lines.join('\n'));
+                console.log('\n✅ 成功！获取到', lines.length, '个代理');
+                console.log('前10个:', lines.slice(0, 10));
+                return true;
+              }
+              
+              // 数量不足，尝试重试
+              if (attempt < MAX_RETRIES) {
+                console.log('代理数量不足，准备重试...');
+                await browser.close();
+                await new Promise(r => setTimeout(r, 5000)); // 等待5秒后重试
+                return fetchProxies(attempt + 1);
+              }
+              
+              // 最后一次，即使少也保存
+              if (lines.length > 0) {
+                fs.writeFileSync('proxies.txt', lines.join('\n'));
+                console.log('\n⚠️ 仅获取到', lines.length, '个代理，已保存');
+                return true;
+              }
+              
+              console.log('\n❌ 未能获取到有效代理');
+              return false;
+              
+            } finally {
+              await browser.close();
             }
-            
-            await browser.close();
-          })();
+          }
+
+          fetchProxies().then(success => {
+            if (!success) {
+              console.log('\n所有尝试均失败');
+              process.exit(1);
+            }
+          }).catch(error => {
+            console.error('执行错误:', error);
+            process.exit(1);
+          });
           SCRIPT
           
           node fetch.js
+      
+      - name: Verify result
+        run: |
+          echo "========== 验证结果 =========="
+          if [ -f proxies.txt ]; then
+            LINES=$(wc -l < proxies.txt)
+            SIZE=$(wc -c < proxies.txt)
+            echo "✅ 文件存在"
+            echo "📊 代理数量: ${LINES} 个"
+            echo "📁 文件大小: ${SIZE} 字节"
+            echo ""
+            echo "=== 文件内容预览 (前20行) ==="
+            head -20 proxies.txt
+          else
+            echo "❌ proxies.txt 不存在"
+            exit 1
+          fi
+      
+      - name: Commit and push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          git add proxies.txt
+          
+          if git diff --staged --quiet; then
+            echo "✅ 文件无变化，无需提交"
+          else
+            PROXY_COUNT=$(wc -l < proxies.txt)
+            TIMESTAMP=$(date -u +'%Y-%m-%d %H:%M UTC')
+            git commit -m "🔄 Update: ${PROXY_COUNT} proxies [${TIMESTAMP}]"
+            git push
+            echo "✅ 已提交并推送更新"
+          fi
