@@ -20,10 +20,42 @@ jobs:
         with:
           node-version: '20'
       
+      # ========== 缓存 npm 依赖 ==========
+      - name: Cache npm dependencies
+        uses: actions/cache@v4
+        id: npm-cache
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-playwright-v1
+          restore-keys: |
+            ${{ runner.os }}-npm-
+      
+      # ========== 缓存 Playwright 浏览器 ==========
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-chromium-v1
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+      
+      # ========== 安装依赖（利用缓存） ==========
       - name: Install Playwright
         run: |
+          echo "📦 npm 缓存状态: ${{ steps.npm-cache.outputs.cache-hit }}"
+          echo "🌐 Playwright 缓存状态: ${{ steps.playwright-cache.outputs.cache-hit }}"
+          
+          # 安装 playwright 包
           npm install playwright
-          npx playwright install chromium
+          
+          # 仅在缓存未命中时下载浏览器
+          if [ "${{ steps.playwright-cache.outputs.cache-hit }}" != "true" ]; then
+            echo "⬇️ 首次运行，下载 Chromium..."
+            npx playwright install chromium
+          else
+            echo "✅ 使用缓存的 Chromium"
+          fi
       
       - name: Fetch with Playwright
         run: |
