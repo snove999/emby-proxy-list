@@ -130,7 +130,7 @@ jobs:
               // 解析代理列表
               const lines = content.trim().split('\n').filter(line => {
                 const trimmed = line.trim();
-                return /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}#[A-Z]{2}$/i.test(trimmed);
+                return /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/.test(trimmed);
               });
               
               console.log('解析到代理数量:', lines.length);
