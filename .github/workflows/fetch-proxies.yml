@@ -2,8 +2,8 @@ name: Fetch Proxy List
 
 on:
   schedule:
-    # 每小时执行
-    - cron: '0 * * * *'
+    # 北京时间每天6点
+    - cron: '0 22 * * *'
   workflow_dispatch:
 
 jobs:
