@@ -5,7 +5,8 @@
 var CONFIG = {
   KV_KEY_PROXIES: 'best_proxies',
   KV_KEY_HEALTH: 'proxy_health',
-
+  
+//优选IP地址，可自行添加删除
   GITHUB_MIRRORS: [
     'https://proxy.api.030101.xyz/https://raw.githubusercontent.com/snove999/emby-proxy-list/refs/heads/main/proxies.txt',
     'https://ghproxy.com/https://raw.githubusercontent.com/snove999/emby-proxy-list/main/proxies.txt',
@@ -14,7 +15,8 @@ var CONFIG = {
   ],
   
   CACHE_TTL: 3600,
-  UPLOAD_SECRET: 'snove520',
+  // 后台访问密码
+  UPLOAD_SECRET: 'xxx',
   
   PROXY_CONFIG: {
     ENABLE_CACHE: true,
@@ -135,7 +137,7 @@ function handleCORS() {
   });
 }
 
-// ==================== 解析目标URL（已修复）====================
+// ==================== 解析目标URL ====================
 function parseTargetUrl(pathname, search) {
   var pathWithoutSlash = pathname.slice(1);
   
@@ -147,7 +149,6 @@ function parseTargetUrl(pathname, search) {
   var hostWithPort;
   var remainingPath;
   
-  // 【修复】先记录用户是否显式指定了协议，在修改 pathWithoutSlash 之前
   var userSpecifiedProtocol = pathWithoutSlash.startsWith('https://') || pathWithoutSlash.startsWith('http://');
   
   // 处理显式协议前缀
@@ -307,7 +308,7 @@ function generateBlockedPage(targetUrl, hostname) {
   });
 }
 
-// ==================== 执行反代请求（已修复 for...of）====================
+// ==================== 执行反代请求 ====================
 async function executeProxy(request, targetUrl, clientCountry, proxyOrigin, parsedTarget) {
   var target;
   
@@ -344,7 +345,7 @@ async function executeProxy(request, targetUrl, clientCountry, proxyOrigin, pars
     }
   }
   
-  // 构建请求头 - 【修复】使用 forEach 替代 for...of
+  // 构建请求头
   var headers = new Headers();
   var skipHeaders = [
     'host', 'cf-connecting-ip', 'cf-ipcountry', 'cf-ray', 'cf-visitor',
@@ -389,7 +390,7 @@ async function executeProxy(request, targetUrl, clientCountry, proxyOrigin, pars
     return jsonResponse({ error: 'Fetch failed', message: e.message, targetUrl: target.toString() }, 502);
   }
   
-  // 构建响应头 - 【修复】使用 forEach 替代 for...of
+  // 构建响应头
   var responseHeaders = new Headers();
   response.headers.forEach(function(value, key) {
     if (CONFIG.PROXY_CONFIG.REMOVE_RESPONSE_HEADERS.indexOf(key.toLowerCase()) === -1) {
@@ -981,3 +982,4 @@ function handleUploadPage() {
     headers: { 'Content-Type': 'text/html; charset=utf-8' }
   });
 }
+
