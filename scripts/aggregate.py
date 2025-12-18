@@ -5,11 +5,11 @@ import json
 import time
 import asyncio
 import socket
+from pathlib import Path
 from datetime import datetime, timezone
 from typing import Set, Dict, List, Optional, Tuple, Any
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, field
 from urllib.parse import urlparse
-from concurrent.futures import ThreadPoolExecutor
 import logging
 
 import requests
@@ -32,11 +32,15 @@ VALIDATION_TIMEOUT = float(os.environ.get('VALIDATION_TIMEOUT', '3'))
 VALIDATION_CONCURRENCY = int(os.environ.get('VALIDATION_CONCURRENCY', '100'))
 OUTPUT_DIR = os.environ.get('OUTPUT_DIR', 'output')
 
+# 脚本目录
+SCRIPT_DIR = Path(__file__).parent.resolve()
+
 # ============================================================
 # 数据源配置
 # ============================================================
 
-SOURCES = [
+# 远程数据源
+REMOTE_SOURCES = [
     {
         "name": "ipTop10.html",
         "url": "https://raw.githubusercontent.com/chnbsdan/cf-speed-dns/refs/heads/main/ipTop10.html",
@@ -69,6 +73,39 @@ SOURCES = [
     }
 ]
 
+# 本地数据源（相对于 scripts 目录）
+LOCAL_SOURCES = [
+    {
+        "name": "resultsUS",
+        "file": "resultsUS.txt",
+        "type": "text",
+        "category": "local-US",
+        "region_hint": "美国"
+    },
+    {
+        "name": "ResultsCN",
+        "file": "ResultsCN.txt",
+        "type": "text",
+        "category": "local-CN",
+        "region_hint": "中国"
+    },
+    {
+        "name": "ResultsAHT",
+        "file": "ResultsAHT.txt",
+        "type": "text",
+        "category": "local-AHT",
+        "region_hint": "韩国"
+    },
+    {
+        "name": "results",
+        "file": "results.txt",
+        "type": "text",
+        "category": "local-general",
+        "region_hint": "通用"
+    }
+]
+
+
 # ============================================================
 # 数据结构
 # ============================================================
@@ -83,14 +120,14 @@ class IPEntry:
     source: str = ""
     category: str = ""
     
-    # 地理信息（从源数据或 API 获取）
+    # 地理信息
     country: str = ""
     region: str = ""
     city: str = ""
     isp: str = ""
     
-    # 网络类型
-    net_type: str = ""  # 机房 / 家宽 / unknown
+    # 网络类型: 机房 / 家宽 / unknown
+    net_type: str = ""
     
     # 验证结果
     is_valid: Optional[bool] = None
@@ -99,14 +136,12 @@ class IPEntry:
     
     @property
     def address(self) -> str:
-        """完整地址 IP:PORT"""
         if self.port:
             return f"{self.ip}:{self.port}"
         return self.ip
     
     @property
     def location(self) -> str:
-        """位置简述"""
         parts = []
         if self.country:
             parts.append(self.country)
@@ -114,16 +149,11 @@ class IPEntry:
             parts.append(self.city)
         elif self.region:
             parts.append(self.region)
-        return " ".join(parts) if parts else "Unknown"
+        return " ".join(parts) if parts else ""
     
     @property
     def net_type_en(self) -> str:
-        """网络类型英文"""
-        mapping = {
-            "机房": "datacenter",
-            "家宽": "residential",
-            "": "unknown"
-        }
+        mapping = {"机房": "datacenter", "家宽": "residential"}
         return mapping.get(self.net_type, "unknown")
     
     def to_dict(self) -> Dict[str, Any]:
@@ -152,32 +182,21 @@ class IPEntry:
 
 IPV4_PATTERN = r'(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'
 
-# 标准代理 URL 格式: protocol://IP:PORT
+# 代理 URL: protocol://IP:PORT
 PROXY_URL_PATTERN = re.compile(
     r'(?:socks[45]?|https?|ss|ssr|vmess|trojan)://'
-    r'(?:[^:@\s]+:[^:@\s]+@)?'  # 可选认证
+    r'(?:[^:@\s]+:[^:@\s]+@)?'
     rf'({IPV4_PATTERN}):(\d{{1,5}})',
     re.IGNORECASE
 )
 
-# 富信息 SOCKS5 格式: socks5://IP:PORT [[类型] 国家 省 城市 [ISP]]
+# 富信息 SOCKS5: socks5://IP:PORT [[类型] 国家 省 城市 [ISP]]
 SOCKS5_RICH_PATTERN = re.compile(
-    rf'socks[45]?://({IPV4_PATTERN}):(\d{{1,5}})'  # IP:PORT
-    r'\s*'
-    r'\[\[([^\]]*)\]\s*'  # [[类型]
-    r'([^\[]*?)'  # 国家 省 城市
-    r'\[([^\]]*)\]\]',  # [ISP]]
-    re.IGNORECASE
-)
-
-# 备用：更宽松的富信息匹配
-SOCKS5_RICH_PATTERN_ALT = re.compile(
     rf'socks[45]?://({IPV4_PATTERN}):(\d{{1,5}})'
-    r'\s*\[\['
-    r'(机房|家宽)'
-    r'\]\s*'
-    r'([^\[]+?)'
-    r'\s*\[([^\]]+)\]\]',
+    r'\s*'
+    r'\[\[([^\]]*)\]\s*'
+    r'([^\[]*?)'
+    r'\[([^\]]*)\]\]',
     re.IGNORECASE
 )
 
@@ -192,11 +211,9 @@ PURE_IP_PATTERN = re.compile(rf'\b({IPV4_PATTERN})\b')
 # 网络工具
 # ============================================================
 
-def fetch_content(url: str, timeout: int = 30, retries: int = 3) -> str:
+def fetch_url(url: str, timeout: int = 30, retries: int = 3) -> str:
     """获取 URL 内容"""
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-    }
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
     
     for attempt in range(retries):
         try:
@@ -210,23 +227,18 @@ def fetch_content(url: str, timeout: int = 30, retries: int = 3) -> str:
     return ""
 
 
-def tcp_ping(ip: str, port: int, timeout: float = 3.0) -> Tuple[bool, Optional[float], str]:
-    """TCP 连接测试"""
+def read_local_file(filepath: Path) -> str:
+    """读取本地文件"""
     try:
-        start = time.time()
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(timeout)
-        result = sock.connect_ex((ip, port))
-        elapsed = (time.time() - start) * 1000
-        sock.close()
-        
-        if result == 0:
-            return True, round(elapsed, 2), ""
-        return False, None, f"Connection failed (code: {result})"
-    except socket.timeout:
-        return False, None, "Timeout"
+        if filepath.exists():
+            with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
+                return f.read()
+        else:
+            logger.warning(f"File not found: {filepath}")
+            return ""
     except Exception as e:
-        return False, None, str(e)
+        logger.error(f"Error reading {filepath}: {e}")
+        return ""
 
 
 async def async_tcp_ping(ip: str, port: int, timeout: float = 3.0) -> Tuple[bool, Optional[float], str]:
@@ -244,9 +256,11 @@ async def async_tcp_ping(ip: str, port: int, timeout: float = 3.0) -> Tuple[bool
     except asyncio.TimeoutError:
         return False, None, "Timeout"
     except ConnectionRefusedError:
-        return False, None, "Connection refused"
+        return False, None, "Refused"
+    except OSError as e:
+        return False, None, str(e)[:20]
     except Exception as e:
-        return False, None, str(e)
+        return False, None, str(e)[:20]
 
 
 async def validate_entries_async(
@@ -258,6 +272,7 @@ async def validate_entries_async(
     semaphore = asyncio.Semaphore(concurrency)
     completed = 0
     total = len(entries)
+    start_time = time.time()
     
     async def validate_one(entry: IPEntry):
         nonlocal completed
@@ -270,6 +285,7 @@ async def validate_entries_async(
                 for test_port in [443, 80, 8080, 1080]:
                     success, latency, error = await async_tcp_ping(entry.ip, test_port, timeout / 4)
                     if success:
+                        entry.port = test_port  # 记录有效端口
                         break
             
             entry.is_valid = success
@@ -277,8 +293,10 @@ async def validate_entries_async(
             entry.validation_error = error
             
             completed += 1
-            if completed % 100 == 0:
-                logger.info(f"   Validated: {completed}/{total}")
+            if completed % 100 == 0 or completed == total:
+                elapsed = time.time() - start_time
+                rate = completed / elapsed if elapsed > 0 else 0
+                logger.info(f"   Progress: {completed}/{total} ({rate:.0f}/s)")
     
     tasks = [validate_one(e) for e in entries]
     await asyncio.gather(*tasks, return_exceptions=True)
@@ -313,32 +331,23 @@ def is_valid_port(port) -> bool:
 
 
 def parse_socks5_rich_line(line: str, source_name: str) -> Optional[IPEntry]:
-    """
-    解析富信息 SOCKS5 行
-    格式: socks5://IP:PORT [[类型] 国家 省 城市 [ISP]]
-    """
+    """解析富信息 SOCKS5 行"""
     line = line.strip()
     if not line or line.startswith('#'):
         return None
     
-    # 尝试主正则
     match = SOCKS5_RICH_PATTERN.search(line)
-    if not match:
-        match = SOCKS5_RICH_PATTERN_ALT.search(line)
-    
     if match:
         ip, port_str, net_type, location_str, isp = match.groups()
         
         if not is_valid_ip(ip) or not is_valid_port(port_str):
             return None
         
-        # 解析位置字符串: "韩国 首尔特别市 首尔特别市" 或 "意大利 普利亚"
         location_parts = location_str.strip().split()
         country = location_parts[0] if len(location_parts) > 0 else ""
         region = location_parts[1] if len(location_parts) > 1 else ""
         city = location_parts[2] if len(location_parts) > 2 else ""
         
-        # 如果只有两部分，第二部分可能是城市
         if len(location_parts) == 2:
             city = region
             region = ""
@@ -355,72 +364,62 @@ def parse_socks5_rich_line(line: str, source_name: str) -> Optional[IPEntry]:
             isp=isp.strip()
         )
     
-    # 回退到简单格式
+    # 回退简单格式
     simple_match = PROXY_URL_PATTERN.search(line)
     if simple_match:
         ip, port_str = simple_match.groups()
         if is_valid_ip(ip) and is_valid_port(port_str):
-            return IPEntry(
-                ip=ip,
-                port=int(port_str),
-                source=source_name,
-                category="socks5"
-            )
+            return IPEntry(ip=ip, port=int(port_str), source=source_name, category="socks5")
     
     return None
 
 
-def parse_simple_line(line: str, source_name: str, category: str) -> List[IPEntry]:
-    """解析简单格式行（IP 或 IP:PORT）"""
+def parse_simple_line(line: str, source_name: str, category: str, region_hint: str = "") -> List[IPEntry]:
+    """解析简单格式行"""
     results = []
     line = line.strip()
     
     if not line or line.startswith('#'):
         return results
     
-    # 尝试代理 URL
+    # 代理 URL
     proxy_match = PROXY_URL_PATTERN.search(line)
     if proxy_match:
         ip, port_str = proxy_match.groups()
         if is_valid_ip(ip) and is_valid_port(port_str):
-            results.append(IPEntry(
-                ip=ip,
-                port=int(port_str),
-                source=source_name,
-                category=category
-            ))
+            entry = IPEntry(ip=ip, port=int(port_str), source=source_name, category=category)
+            if region_hint:
+                entry.country = region_hint
+            results.append(entry)
         return results
     
-    # 尝试 IP:PORT
+    # IP:PORT 或 IP#PORT
     for match in LOOSE_IP_PORT_PATTERN.finditer(line):
         ip, port_str = match.groups()
         if is_valid_ip(ip) and is_valid_port(port_str):
-            results.append(IPEntry(
-                ip=ip,
-                port=int(port_str),
-                source=source_name,
-                category=category
-            ))
+            entry = IPEntry(ip=ip, port=int(port_str), source=source_name, category=category)
+            if region_hint:
+                entry.country = region_hint
+            results.append(entry)
     
-    # 尝试纯 IP
+    # 纯 IP
     if not results:
         for match in PURE_IP_PATTERN.finditer(line):
             ip = match.group(1)
             if is_valid_ip(ip):
-                results.append(IPEntry(
-                    ip=ip,
-                    source=source_name,
-                    category=category
-                ))
+                entry = IPEntry(ip=ip, source=source_name, category=category)
+                if region_hint:
+                    entry.country = region_hint
+                results.append(entry)
     
     return results
 
 
-def parse_text_content(content: str, source_name: str, category: str) -> List[IPEntry]:
+def parse_text_content(content: str, source_name: str, category: str, region_hint: str = "") -> List[IPEntry]:
     """解析纯文本内容"""
     entries = []
     for line in content.split('\n'):
-        entries.extend(parse_simple_line(line, source_name, category))
+        entries.extend(parse_simple_line(line, source_name, category, region_hint))
     return entries
 
 
@@ -441,19 +440,16 @@ def parse_html_content(content: str, source_name: str, category: str) -> List[IP
     try:
         soup = BeautifulSoup(content, 'lxml')
         
-        # 从表格提取
         for table in soup.find_all('table'):
             for row in table.find_all('tr'):
                 for cell in row.find_all(['td', 'th']):
                     text = cell.get_text(strip=True)
                     entries.extend(parse_simple_line(text, source_name, category))
         
-        # 从其他标签提取
         for tag in soup.find_all(['span', 'div', 'p', 'li', 'code', 'pre']):
             text = tag.get_text(strip=True)
             entries.extend(parse_simple_line(text, source_name, category))
         
-        # 兜底：纯文本
         plain_text = soup.get_text(separator='\n')
         entries.extend(parse_text_content(plain_text, source_name, category))
         
@@ -468,13 +464,13 @@ def parse_html_content(content: str, source_name: str, category: str) -> List[IP
 # 数据源处理
 # ============================================================
 
-def process_source(source: Dict) -> List[IPEntry]:
-    """处理单个数据源"""
-    logger.info(f"📥 Fetching: {source['name']}")
+def process_remote_source(source: Dict) -> List[IPEntry]:
+    """处理远程数据源"""
+    logger.info(f"📥 Remote: {source['name']}")
     
-    content = fetch_content(source['url'])
+    content = fetch_url(source['url'])
     if not content:
-        logger.warning(f"⚠️  Empty: {source['name']}")
+        logger.warning(f"   ⚠️ Empty content")
         return []
     
     source_type = source['type']
@@ -488,7 +484,27 @@ def process_source(source: Dict) -> List[IPEntry]:
     else:
         entries = parse_text_content(content, source_name, category)
     
-    logger.info(f"✅ Found {len(entries)} entries from {source_name}")
+    logger.info(f"   ✅ Found {len(entries)} entries")
+    return entries
+
+
+def process_local_source(source: Dict) -> List[IPEntry]:
+    """处理本地数据源"""
+    filepath = SCRIPT_DIR / source['file']
+    logger.info(f"📂 Local: {source['name']} ({source['file']})")
+    
+    content = read_local_file(filepath)
+    if not content:
+        logger.warning(f"   ⚠️ Empty or not found")
+        return []
+    
+    source_name = source['name']
+    category = source.get('category', 'local')
+    region_hint = source.get('region_hint', '')
+    
+    entries = parse_text_content(content, source_name, category, region_hint)
+    
+    logger.info(f"   ✅ Found {len(entries)} entries")
     return entries
 
 
@@ -502,12 +518,10 @@ def deduplicate_entries(entries: List[IPEntry]) -> List[IPEntry]:
         if key not in seen:
             seen[key] = entry
         else:
-            # 保留信息更丰富的
             existing = seen[key]
-            # 如果新条目有地理信息而旧的没有，替换
+            # 保留信息更丰富的
             if entry.country and not existing.country:
                 seen[key] = entry
-            # 如果新条目有网络类型而旧的没有，合并
             elif entry.net_type and not existing.net_type:
                 existing.net_type = entry.net_type
                 existing.country = entry.country or existing.country
@@ -559,27 +573,34 @@ class Exporter:
         """导出详细 TXT"""
         filepath = os.path.join(self.output_dir, "all.txt")
         
-        valid_count = sum(1 for e in entries if e.is_valid is True or e.is_valid is None)
+        valid_count = sum(1 for e in entries if e.is_valid is True)
+        untested = sum(1 for e in entries if e.is_valid is None)
         
         lines = [
             "# " + "=" * 70,
             "# Aggregated IP/Proxy Addresses",
             f"# Generated: {self.timestamp}",
-            f"# Total: {len(entries)} | Valid: {valid_count}",
+            f"# Total: {len(entries)} | Valid: {valid_count} | Untested: {untested}",
             "# " + "=" * 70,
-            "# Format: ADDRESS | TYPE | LATENCY | LOCATION | ISP",
+            "# Format: ADDRESS | STATUS | LATENCY | TYPE | LOCATION | ISP",
             "# " + "=" * 70,
             ""
         ]
         
         for e in entries:
-            status = "✓" if e.is_valid else ("✗" if e.is_valid is False else "?")
+            if e.is_valid is True:
+                status = "✓"
+            elif e.is_valid is False:
+                status = "✗"
+            else:
+                status = "?"
+            
             latency = f"{e.latency_ms:.0f}ms" if e.latency_ms else "-"
             net_type = e.net_type or "-"
             location = e.location or "-"
-            isp = e.isp[:30] if e.isp else "-"
+            isp = e.isp[:25] if e.isp else "-"
             
-            lines.append(f"{e.address:<22} | {status} {net_type:<4} | {latency:<8} | {location:<20} | {isp}")
+            lines.append(f"{e.address:<22} | {status} | {latency:<7} | {net_type:<4} | {location:<15} | {isp}")
         
         lines.append("")
         
@@ -590,10 +611,10 @@ class Exporter:
         """导出 JSON"""
         filepath = os.path.join(self.output_dir, "all.json")
         
-        # 统计
         by_country = {}
         by_net_type = {"datacenter": 0, "residential": 0, "unknown": 0}
         by_source = {}
+        by_category = {}
         
         for item in data:
             country = item.get('country') or 'Unknown'
@@ -604,8 +625,10 @@ class Exporter:
             
             source = item.get('source', 'unknown')
             by_source[source] = by_source.get(source, 0) + 1
+            
+            cat = item.get('category', 'unknown')
+            by_category[cat] = by_category.get(cat, 0) + 1
         
-        # 延迟统计
         latencies = [d['latency_ms'] for d in data if d.get('latency_ms')]
         latency_stats = {}
         if latencies:
@@ -621,13 +644,16 @@ class Exporter:
             "metadata": {
                 "generated_at": self.timestamp,
                 "total_count": len(data),
-                "valid_count": sum(1 for d in data if d.get('is_valid') is True or d.get('is_valid') is None),
+                "valid_count": sum(1 for d in data if d.get('is_valid') is True),
+                "invalid_count": sum(1 for d in data if d.get('is_valid') is False),
+                "untested_count": sum(1 for d in data if d.get('is_valid') is None),
                 "validated": not SKIP_VALIDATION
             },
             "statistics": {
                 "by_country": dict(sorted(by_country.items(), key=lambda x: x[1], reverse=True)),
                 "by_net_type": by_net_type,
                 "by_source": by_source,
+                "by_category": by_category,
                 "latency": latency_stats
             },
             "data": data
@@ -644,9 +670,9 @@ class Exporter:
             return
         
         fieldnames = [
-            'address', 'ip', 'port', 'net_type', 'net_type_en',
-            'country', 'region', 'city', 'isp', 'location',
-            'is_valid', 'latency_ms', 'source', 'category'
+            'address', 'ip', 'port', 'is_valid', 'latency_ms',
+            'net_type', 'net_type_en', 'country', 'region', 'city', 'isp',
+            'location', 'source', 'category', 'validation_error'
         ]
         
         with open(filepath, 'w', newline='', encoding='utf-8') as f:
@@ -655,21 +681,57 @@ class Exporter:
             writer.writerows(data)
     
     def _export_valid_only(self, entries: List[IPEntry]):
-        """导出仅有效 IP"""
+        """
+        导出有效 IP 列表
+        - 验证通过的 (is_valid=True)
+        - 未验证的也包含 (is_valid=None)，除非 SKIP_VALIDATION=false
+        """
         filepath = os.path.join(self.output_dir, "valid_only.txt")
         
-        valid = [e for e in entries if e.is_valid is True or e.is_valid is None]
+        if SKIP_VALIDATION:
+            # 跳过验证时，输出所有
+            valid = entries
+        else:
+            # 仅输出验证通过的
+            valid = [e for e in entries if e.is_valid is True]
+        
+        # 按延迟排序（有延迟的在前）
+        valid_sorted = sorted(valid, key=lambda x: (x.latency_ms is None, x.latency_ms or 9999))
         
         lines = [
-            f"# Valid IPs - {self.timestamp}",
-            f"# Count: {len(valid)}",
+            f"# ========================================",
+            f"# Valid IP Addresses",
+            f"# Generated: {self.timestamp}",
+            f"# Count: {len(valid_sorted)}",
+            f"# ========================================",
+            f"# Sorted by latency (fastest first)",
+            f"# ========================================",
             ""
         ]
-        lines.extend([e.address for e in valid])
+        
+        for e in valid_sorted:
+            # 格式: IP:PORT  # latency | location | isp
+            comment_parts = []
+            if e.latency_ms:
+                comment_parts.append(f"{e.latency_ms:.0f}ms")
+            if e.net_type:
+                comment_parts.append(e.net_type)
+            if e.location:
+                comment_parts.append(e.location)
+            if e.isp:
+                comment_parts.append(e.isp[:20])
+            
+            if comment_parts:
+                lines.append(f"{e.address}  # {' | '.join(comment_parts)}")
+            else:
+                lines.append(e.address)
+        
         lines.append("")
         
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write('\n'.join(lines))
+        
+        logger.info(f"   📄 valid_only.txt: {len(valid_sorted)} entries")
     
     def _export_summary(self, entries: List[IPEntry], stats: Dict):
         """导出 Markdown 摘要"""
@@ -678,7 +740,12 @@ class Exporter:
         total = len(entries)
         valid = sum(1 for e in entries if e.is_valid is True)
         invalid = sum(1 for e in entries if e.is_valid is False)
-        untested = total - valid - invalid
+        untested = sum(1 for e in entries if e.is_valid is None)
+        
+        # 按来源统计
+        source_counts = {}
+        for e in entries:
+            source_counts[e.source] = source_counts.get(e.source, 0) + 1
         
         # 国家统计
         country_counts = {}
@@ -688,18 +755,18 @@ class Exporter:
         top_countries = sorted(country_counts.items(), key=lambda x: x[1], reverse=True)[:15]
         
         # 网络类型统计
-        net_type_counts = {"机房": 0, "家宽": 0, "未知": 0}
+        net_counts = {"机房": 0, "家宽": 0, "未知": 0}
         for e in entries:
             if e.net_type == "机房":
-                net_type_counts["机房"] += 1
+                net_counts["机房"] += 1
             elif e.net_type == "家宽":
-                net_type_counts["家宽"] += 1
+                net_counts["家宽"] += 1
             else:
-                net_type_counts["未知"] += 1
+                net_counts["未知"] += 1
         
         # 最快 IP
         valid_with_latency = [e for e in entries if e.is_valid and e.latency_ms]
-        fastest = sorted(valid_with_latency, key=lambda x: x.latency_ms)[:15]
+        fastest = sorted(valid_with_latency, key=lambda x: x.latency_ms)[:20]
         
         md = f"""# 📊 IP Aggregation Report
 
@@ -710,26 +777,27 @@ class Exporter:
 | Metric | Value |
 |--------|-------|
 | **Total Entries** | {total} |
-| **✅ Valid** | {valid} ({valid/total*100:.1f}% ) |
+| **✅ Valid** | {valid} ({valid/total*100:.1f}%) |
 | **❌ Invalid** | {invalid} ({invalid/total*100:.1f}%) |
-| **❓ Untested** | {untested} |
+| **❓ Untested** | {untested} ({untested/total*100:.1f}%) |
 
-## 📡 Sources
+## 📡 Data Sources
 
-| Source | Count |
-|--------|-------|
+| Source | Count | Type |
+|--------|-------|------|
 """
-        for name, count in stats.get('sources', {}).items():
-            md += f"| {name} | {count} |\n"
+        for name, count in sorted(source_counts.items(), key=lambda x: x[1], reverse=True):
+            src_type = "🌐 Remote" if any(s['name'] == name for s in REMOTE_SOURCES) else "📂 Local"
+            md += f"| {name} | {count} | {src_type} |\n"
         
         md += f"""
 ## 🏠 Network Type Distribution
 
 | Type | Count | Percentage |
 |------|-------|------------|
-| 🏢 机房 (Datacenter) | {net_type_counts['机房']} | {net_type_counts['机房']/total*100:.1f}% |
-| 🏠 家宽 (Residential) | {net_type_counts['家宽']} | {net_type_counts['家宽']/total*100:.1f}% |
-| ❓ 未知 (Unknown) | {net_type_counts['未知']} | {net_type_counts['未知']/total*100:.1f}% |
+| 🏢 机房 (Datacenter) | {net_counts['机房']} | {net_counts['机房']/total*100:.1f}% |
+| 🏠 家宽 (Residential) | {net_counts['家宽']} | {net_counts['家宽']/total*100:.1f}% |
+| ❓ 未知 (Unknown) | {net_counts['未知']} | {net_counts['未知']/total*100:.1f}% |
 
 ## 🌍 Geographic Distribution (Top 15)
 
@@ -741,20 +809,32 @@ class Exporter:
             md += f"| {country} | {count} | {pct:.1f}% |\n"
         
         md += f"""
-## ⚡ Top 15 Fastest IPs
+## ⚡ Top 20 Fastest IPs
 
-| Address | Latency | Type | Location | ISP |
-|---------|---------|------|----------|-----|
+| # | Address | Latency | Type | Location | ISP |
+|---|---------|---------|------|----------|-----|
 """
-        for e in fastest:
+        for i, e in enumerate(fastest, 1):
             net = e.net_type or "-"
             loc = e.location or "-"
-            isp = (e.isp[:25] + "...") if e.isp and len(e.isp) > 25 else (e.isp or "-")
-            md += f"| `{e.address}` | {e.latency_ms:.0f}ms | {net} | {loc} | {isp} |\n"
+            isp = (e.isp[:20] + "...") if e.isp and len(e.isp) > 20 else (e.isp or "-")
+            md += f"| {i} | `{e.address}` | {e.latency_ms:.0f}ms | {net} | {loc} | {isp} |\n"
         
         md += """
 ---
-*Auto-generated by IP Aggregation System v4.0*
+
+## 📁 Output Files
+
+| File | Description |
+|------|-------------|
+| `all.txt` | All entries with details |
+| `all.json` | Full data in JSON format |
+| `all.csv` | Spreadsheet format |
+| `valid_only.txt` | Only valid IPs (fastest first) |
+| `summary.md` | This report |
+
+---
+*Auto-generated by IP Aggregation System v5.0*
 """
         
         with open(filepath, 'w', encoding='utf-8') as f:
@@ -765,7 +845,7 @@ class Exporter:
         filepath = "all.txt"
         
         lines = [
-            f"# IP List - {self.timestamp}",
+            f"# Aggregated IPs - {self.timestamp}",
             f"# Total: {len(entries)}",
             ""
         ]
@@ -785,11 +865,12 @@ def main():
     start_time = time.time()
     
     logger.info("=" * 60)
-    logger.info("🚀 IP Aggregation System v4.0")
+    logger.info("🚀 IP Aggregation System v5.0")
     logger.info("=" * 60)
     logger.info(f"⚙️  Validation: {'SKIP' if SKIP_VALIDATION else 'ENABLED'}")
     if not SKIP_VALIDATION:
         logger.info(f"⚙️  Timeout: {VALIDATION_TIMEOUT}s | Concurrency: {VALIDATION_CONCURRENCY}")
+    logger.info(f"⚙️  Script dir: {SCRIPT_DIR}")
     logger.info("=" * 60)
     
     # ===== 阶段 1: 数据采集 =====
@@ -799,19 +880,32 @@ def main():
     all_entries: List[IPEntry] = []
     source_stats: Dict[str, int] = {}
     
-    for source in SOURCES:
+    # 远程源
+    logger.info("\n🌐 Remote sources:")
+    for source in REMOTE_SOURCES:
         try:
-            entries = process_source(source)
+            entries = process_remote_source(source)
             all_entries.extend(entries)
             source_stats[source['name']] = len(entries)
         except Exception as e:
-            logger.error(f"❌ Error processing {source['name']}: {e}")
+            logger.error(f"   ❌ Error: {source['name']}: {e}")
             source_stats[source['name']] = 0
     
-    logger.info(f"\n📊 Raw total: {len(all_entries)}")
+    # 本地源
+    logger.info("\n📂 Local sources:")
+    for source in LOCAL_SOURCES:
+        try:
+            entries = process_local_source(source)
+            all_entries.extend(entries)
+            source_stats[source['name']] = len(entries)
+        except Exception as e:
+            logger.error(f"   ❌ Error: {source['name']}: {e}")
+            source_stats[source['name']] = 0
+    
+    logger.info(f"\n📊 Raw total: {len(all_entries)} entries")
     
     # ===== 阶段 2: 去重排序 =====
-    logger.info("\n🔄 PHASE 2: Deduplication")
+    logger.info("\n🔄 PHASE 2: Deduplication & Sorting")
     logger.info("-" * 40)
     
     unique_entries = deduplicate_entries(all_entries)
@@ -823,6 +917,7 @@ def main():
     if not SKIP_VALIDATION and unique_entries:
         logger.info("\n🔍 PHASE 3: Validation")
         logger.info("-" * 40)
+        logger.info(f"   Testing {len(unique_entries)} addresses...")
         
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
@@ -838,7 +933,8 @@ def main():
             loop.close()
         
         valid_count = sum(1 for e in unique_entries if e.is_valid)
-        logger.info(f"\n📊 Valid: {valid_count}/{len(unique_entries)}")
+        invalid_count = sum(1 for e in unique_entries if e.is_valid is False)
+        logger.info(f"\n📊 Results: ✅ {valid_count} valid | ❌ {invalid_count} invalid")
     else:
         logger.info("\n⏭️  PHASE 3: Validation SKIPPED")
     
@@ -857,14 +953,21 @@ def main():
     logger.info("✨ COMPLETED")
     logger.info("=" * 60)
     logger.info(f"📊 Total: {len(unique_entries)} entries")
+    if not SKIP_VALIDATION:
+        valid = sum(1 for e in unique_entries if e.is_valid)
+        logger.info(f"✅ Valid: {valid}")
     logger.info(f"⏱️  Time: {elapsed:.1f}s")
     logger.info("=" * 60)
     
     # 输出文件列表
     logger.info("\n📁 Output files:")
     for f in ["all.txt", "all.json", "all.csv", "valid_only.txt", "summary.md"]:
-        logger.info(f"   - output/{f}")
-    logger.info("   - all.txt (root)")
+        filepath = os.path.join(OUTPUT_DIR, f)
+        if os.path.exists(filepath):
+            size = os.path.getsize(filepath)
+            logger.info(f"   ✓ {OUTPUT_DIR}/{f} ({size:,} bytes)")
+    if os.path.exists("all.txt"):
+        logger.info(f"   ✓ all.txt (root)")
 
 
 if __name__ == "__main__":
