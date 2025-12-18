@@ -138,7 +138,7 @@ jobs:
               if (lines.length >= 5) {
                 fs.writeFileSync('proxies.txt', lines.join('\n'));
                 console.log('\n✅ 成功！获取到', lines.length, '个代理');
-                console.log('前10个:', lines.slice(0, 10));
+                console.log('前20个:', lines.slice(0, 20));
                 return true;
               }
               
