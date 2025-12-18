@@ -2,7 +2,7 @@ name: Aggregate & Validate IP Addresses
 
 on:
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '0 */6 * * *'
   workflow_dispatch:
     inputs:
       skip_validation:
@@ -15,11 +15,16 @@ on:
         required: false
         default: '3'
         type: string
+      validation_concurrency:
+        description: 'Concurrent validations'
+        required: false
+        default: '100'
+        type: string
 
 jobs:
   aggregate:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     
     permissions:
       contents: write
@@ -46,7 +51,19 @@ jobs:
         env:
           SKIP_VALIDATION: ${{ github.event.inputs.skip_validation || 'false' }}
           VALIDATION_TIMEOUT: ${{ github.event.inputs.validation_timeout || '3' }}
+          VALIDATION_CONCURRENCY: ${{ github.event.inputs.validation_concurrency || '100' }}
         run: python scripts/aggregate.py
+
+      - name: Show output summary
+        run: |
+          echo "=== Output Files ==="
+          ls -la output/
+          echo ""
+          echo "=== Valid IPs Preview ==="
+          head -30 output/valid_only.txt || true
+          echo ""
+          echo "=== Stats ==="
+          wc -l output/*.txt || true
 
       - name: Commit and push changes
         run: |
@@ -58,6 +75,8 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes detected"
           else
-            git commit -m "🔄 Update IPs - $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+            # 获取统计信息
+            TOTAL=$(grep -c '^[^#]' output/valid_only.txt 2>/dev/null || echo 0)
+            git commit -m "🔄 Update IPs - ${TOTAL} valid - $(date -u '+%Y-%m-%d %H:%M UTC')"
             git push
           fi
