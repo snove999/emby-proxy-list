@@ -6,7 +6,8 @@ var CONFIG = {
   GITHUB_MIRRORS: [
     'https://proxy.api.030101.xyz/https://raw.githubusercontent.com/snove999/emby-proxy-list/main/proxies.txt'
   ],
-  UPLOAD_SECRET: 'snove520',
+  // 上传密码
+  UPLOAD_SECRET: 'xxx',
   PROTOCOL_CACHE_TTL: 86400,
   
   REMOVE_HEADERS: ['content-security-policy', 'content-security-policy-report-only', 'x-frame-options'],
