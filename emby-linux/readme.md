@@ -1,3 +1,5 @@
+# 需要自行测试
+
 ### 第一步：Node.js 完善
 
 首先，在你的 Linux 目录中初始化并安装依赖：
@@ -99,3 +101,4 @@ server {
     sudo ufw allow 443/tcp
     sudo ufw enable
     ```
+
