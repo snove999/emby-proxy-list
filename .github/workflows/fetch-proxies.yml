@@ -83,7 +83,7 @@ jobs:
               const page = await context.newPage();
               
               console.log('访问页面...');
-              await page.goto('https://ipdb.api.030101.xyz/?type=bestproxy;bestcf;proxy&country=true', {
+              await page.goto('https://ipdb.api.030101.xyz/?type=bestproxy;bestcf;proxy', {
                 waitUntil: 'domcontentloaded',
                 timeout: 30000
               });
