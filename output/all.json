@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "generated_at": "2026-04-19 18:42:10 UTC",
-    "total_count": 1509,
-    "valid_count": 434,
-    "invalid_count": 1075,
+    "generated_at": "2026-04-20 02:14:07 UTC",
+    "total_count": 1520,
+    "valid_count": 450,
+    "invalid_count": 1070,
     "untested_count": 0,
     "validated": true
   },
@@ -12,13 +12,13 @@
       "美国": 512,
       "韩国": 462,
       "通用": 371,
-      "Unknown": 87,
+      "Unknown": 98,
       "中国": 77
     },
     "by_net_type": {
       "datacenter": 0,
       "residential": 0,
-      "unknown": 1509
+      "unknown": 1520
     },
     "by_source": {
       "results": 371,
@@ -26,7 +26,9 @@
       "ResultsAHT": 462,
       "ResultsCN": 77,
       "resultsUS": 512,
+      "bestcf": 10,
       "ipTop10.html": 10,
+      "bestproxy": 1,
       "edgetunnel-output": 47
     },
     "by_category": {
@@ -35,13 +37,14 @@
       "local-AHT": 462,
       "local-CN": 77,
       "local-US": 512,
+      "proxy": 11,
       "cloudflare": 57
     },
     "latency": {
-      "min": 1.3,
-      "max": 2289.02,
-      "avg": 162.16,
-      "median": 154.84
+      "min": 1.64,
+      "max": 2177.82,
+      "avg": 140.43,
+      "median": 109.01
     }
   },
   "data": [
@@ -59,7 +62,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 82.5,
+      "latency_ms": 18.02,
       "validation_error": ""
     },
     {
@@ -76,7 +79,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 233.56,
+      "latency_ms": 223.98,
       "validation_error": ""
     },
     {
@@ -92,9 +95,9 @@
       "net_type": "",
       "net_type_en": "unknown",
       "location": "",
-      "is_valid": true,
-      "latency_ms": 119.5,
-      "validation_error": ""
+      "is_valid": false,
+      "latency_ms": null,
+      "validation_error": "Timeout"
     },
     {
       "address": "4.188.2.252:443",
@@ -110,7 +113,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 235.04,
+      "latency_ms": 204.62,
       "validation_error": ""
     },
     {
@@ -127,7 +130,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 233.25,
+      "latency_ms": 211.71,
       "validation_error": ""
     },
     {
@@ -144,7 +147,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 29.95,
+      "latency_ms": 76.67,
       "validation_error": ""
     },
     {
@@ -161,7 +164,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 227.15,
+      "latency_ms": 208.51,
       "validation_error": ""
     },
     {
@@ -177,9 +180,9 @@
       "net_type": "",
       "net_type_en": "unknown",
       "location": "",
-      "is_valid": true,
-      "latency_ms": 236.46,
-      "validation_error": ""
+      "is_valid": false,
+      "latency_ms": null,
+      "validation_error": "Timeout"
     },
     {
       "address": "8.20.113.68:443",
@@ -195,7 +198,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 31.58,
+      "latency_ms": 83.47,
       "validation_error": ""
     },
     {
@@ -212,7 +215,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 218.92,
+      "latency_ms": 269.87,
       "validation_error": ""
     },
     {
@@ -246,7 +249,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 168.65,
+      "latency_ms": 213.04,
       "validation_error": ""
     },
     {
@@ -331,7 +334,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 159.68,
+      "latency_ms": 222.35,
       "validation_error": ""
     },
     {
@@ -365,7 +368,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 170.45,
+      "latency_ms": 213.26,
       "validation_error": ""
     },
     {
@@ -400,7 +403,7 @@
       "location": "韩国",
       "is_valid": false,
       "latency_ms": null,
-      "validation_error": "Refused"
+      "validation_error": "Timeout"
     },
     {
       "address": "8.210.81.24:1080",
@@ -433,7 +436,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 167.17,
+      "latency_ms": 248.5,
       "validation_error": ""
     },
     {
@@ -467,7 +470,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 168.38,
+      "latency_ms": 226.13,
       "validation_error": ""
     },
     {
@@ -603,7 +606,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 164.04,
+      "latency_ms": 222.81,
       "validation_error": ""
     },
     {
@@ -636,9 +639,9 @@
       "net_type": "",
       "net_type_en": "unknown",
       "location": "韩国",
-      "is_valid": false,
-      "latency_ms": null,
-      "validation_error": "Timeout"
+      "is_valid": true,
+      "latency_ms": 242.62,
+      "validation_error": ""
     },
     {
       "address": "8.210.110.204:5555",
@@ -671,7 +674,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 164.41,
+      "latency_ms": 237.71,
       "validation_error": ""
     },
     {
@@ -1266,7 +1269,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 165.2,
+      "latency_ms": 222.08,
       "validation_error": ""
     },
     {
@@ -1282,9 +1285,9 @@
       "net_type": "",
       "net_type_en": "unknown",
       "location": "韩国",
-      "is_valid": false,
-      "latency_ms": null,
-      "validation_error": "Timeout"
+      "is_valid": true,
+      "latency_ms": 225.59,
+      "validation_error": ""
     },
     {
       "address": "8.217.1.173:1080",
@@ -1300,7 +1303,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 166.4,
+      "latency_ms": 233.63,
       "validation_error": ""
     },
     {
@@ -1317,7 +1320,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 166.65,
+      "latency_ms": 244.08,
       "validation_error": ""
     },
     {
@@ -1504,7 +1507,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 168.04,
+      "latency_ms": 245.59,
       "validation_error": ""
     },
     {
@@ -1521,7 +1524,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 168.02,
+      "latency_ms": 234.1,
       "validation_error": ""
     },
     {
@@ -1589,7 +1592,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 168.17,
+      "latency_ms": 223.52,
       "validation_error": ""
     },
     {
@@ -1623,7 +1626,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 167.63,
+      "latency_ms": 216.71,
       "validation_error": ""
     },
     {
@@ -1674,7 +1677,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 167.52,
+      "latency_ms": 243.97,
       "validation_error": ""
     },
     {
@@ -1725,7 +1728,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 171.79,
+      "latency_ms": 215.93,
       "validation_error": ""
     },
     {
@@ -1742,7 +1745,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 172.72,
+      "latency_ms": 214.24,
       "validation_error": ""
     },
     {
@@ -1776,7 +1779,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 151.27,
+      "latency_ms": 199.4,
       "validation_error": ""
     },
     {
@@ -1793,7 +1796,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 148.75,
+      "latency_ms": 201.14,
       "validation_error": ""
     },
     {
@@ -1810,7 +1813,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 152.24,
+      "latency_ms": 233.63,
       "validation_error": ""
     },
     {
@@ -1827,7 +1830,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 150.65,
+      "latency_ms": 200.19,
       "validation_error": ""
     },
     {
@@ -1878,7 +1881,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 150.34,
+      "latency_ms": 206.99,
       "validation_error": ""
     },
     {
@@ -1912,7 +1915,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 147.94,
+      "latency_ms": 210.44,
       "validation_error": ""
     },
     {
@@ -2150,7 +2153,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 153.05,
+      "latency_ms": 213.16,
       "validation_error": ""
     },
     {
@@ -2524,7 +2527,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 155.12,
+      "latency_ms": 196.7,
       "validation_error": ""
     },
     {
@@ -2609,7 +2612,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 154.31,
+      "latency_ms": 207.83,
       "validation_error": ""
     },
     {
@@ -2660,7 +2663,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 155.27,
+      "latency_ms": 1261.69,
       "validation_error": ""
     },
     {
@@ -2676,9 +2679,9 @@
       "net_type": "",
       "net_type_en": "unknown",
       "location": "韩国",
-      "is_valid": false,
-      "latency_ms": null,
-      "validation_error": "Timeout"
+      "is_valid": true,
+      "latency_ms": 1259.78,
+      "validation_error": ""
     },
     {
       "address": "8.218.253.187:1080",
@@ -3051,7 +3054,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 130.03,
+      "latency_ms": 188.19,
       "validation_error": ""
     },
     {
@@ -3068,25 +3071,8 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 170.99,
+      "latency_ms": 238.62,
       "validation_error": ""
-    },
-    {
-      "address": "13.114.141.222:1080",
-      "ip": "13.114.141.222",
-      "port": 1080,
-      "source": "socks5-proxy",
-      "category": "socks5",
-      "country": "",
-      "region": "",
-      "city": "",
-      "isp": "",
-      "net_type": "",
-      "net_type_en": "unknown",
-      "location": "",
-      "is_valid": false,
-      "latency_ms": null,
-      "validation_error": "Timeout"
     },
     {
       "address": "15.204.196.219:443",
@@ -3119,7 +3105,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 142.85,
+      "latency_ms": 77.71,
       "validation_error": ""
     },
     {
@@ -3136,7 +3122,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 57.92,
+      "latency_ms": 19.05,
       "validation_error": ""
     },
     {
@@ -3170,7 +3156,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 109.24,
+      "latency_ms": 158.26,
       "validation_error": ""
     },
     {
@@ -3187,7 +3173,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 22.96,
+      "latency_ms": 72.22,
       "validation_error": ""
     },
     {
@@ -3204,7 +3190,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 145.16,
+      "latency_ms": 81.52,
       "validation_error": ""
     },
     {
@@ -3221,7 +3207,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 24.6,
+      "latency_ms": 76.9,
       "validation_error": ""
     },
     {
@@ -3238,7 +3224,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 221.39,
+      "latency_ms": 197.12,
       "validation_error": ""
     },
     {
@@ -3272,7 +3258,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 228.05,
+      "latency_ms": 195.71,
       "validation_error": ""
     },
     {
@@ -3289,7 +3275,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 236.46,
+      "latency_ms": 284.81,
       "validation_error": ""
     },
     {
@@ -3306,7 +3292,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 209.45,
+      "latency_ms": 267.7,
       "validation_error": ""
     },
     {
@@ -3323,7 +3309,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 198.82,
+      "latency_ms": 267.03,
       "validation_error": ""
     },
     {
@@ -3340,7 +3326,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 172.39,
+      "latency_ms": 107.57,
       "validation_error": ""
     },
     {
@@ -3357,7 +3343,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 177.82,
+      "latency_ms": 106.27,
       "validation_error": ""
     },
     {
@@ -3374,7 +3360,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 187.27,
+      "latency_ms": 131.37,
       "validation_error": ""
     },
     {
@@ -3425,7 +3411,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 68.58,
+      "latency_ms": 19.85,
       "validation_error": ""
     },
     {
@@ -3442,7 +3428,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 69.53,
+      "latency_ms": 20.19,
       "validation_error": ""
     },
     {
@@ -3476,7 +3462,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 69.93,
+      "latency_ms": 20.53,
       "validation_error": ""
     },
     {
@@ -3510,7 +3496,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 228.13,
+      "latency_ms": 239.61,
       "validation_error": ""
     },
     {
@@ -3527,7 +3513,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 221.93,
+      "latency_ms": 205.64,
       "validation_error": ""
     },
     {
@@ -3561,7 +3547,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 170.69,
+      "latency_ms": 224.45,
       "validation_error": ""
     },
     {
@@ -3578,7 +3564,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 68.41,
+      "latency_ms": 20.01,
       "validation_error": ""
     },
     {
@@ -3595,7 +3581,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 139.62,
+      "latency_ms": 197.04,
       "validation_error": ""
     },
     {
@@ -3612,7 +3598,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 60.14,
+      "latency_ms": 7.04,
       "validation_error": ""
     },
     {
@@ -3629,7 +3615,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 68.23,
+      "latency_ms": 19.47,
       "validation_error": ""
     },
     {
@@ -3646,7 +3632,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 169.01,
+      "latency_ms": 217.53,
       "validation_error": ""
     },
     {
@@ -3748,7 +3734,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 202.83,
+      "latency_ms": 249.01,
       "validation_error": ""
     },
     {
@@ -3816,7 +3802,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 286.18,
+      "latency_ms": 231.06,
       "validation_error": ""
     },
     {
@@ -3833,7 +3819,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 185.97,
+      "latency_ms": 238.61,
       "validation_error": ""
     },
     {
@@ -3867,7 +3853,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 149.72,
+      "latency_ms": 199.2,
       "validation_error": ""
     },
     {
@@ -4071,7 +4057,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 152.16,
+      "latency_ms": 91.26,
       "validation_error": ""
     },
     {
@@ -4105,7 +4091,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 152.78,
+      "latency_ms": 84.45,
       "validation_error": ""
     },
     {
@@ -4122,7 +4108,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 58.74,
+      "latency_ms": 14.84,
       "validation_error": ""
     },
     {
@@ -4139,7 +4125,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 149.22,
+      "latency_ms": 89.87,
       "validation_error": ""
     },
     {
@@ -4173,7 +4159,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 172.77,
+      "latency_ms": 120.18,
       "validation_error": ""
     },
     {
@@ -4190,7 +4176,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 146.09,
+      "latency_ms": 76.87,
       "validation_error": ""
     },
     {
@@ -4224,7 +4210,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 169.31,
+      "latency_ms": 106.8,
       "validation_error": ""
     },
     {
@@ -4241,7 +4227,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 244.72,
+      "latency_ms": 179.47,
       "validation_error": ""
     },
     {
@@ -4343,7 +4329,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 151.04,
+      "latency_ms": 201.63,
       "validation_error": ""
     },
     {
@@ -4479,7 +4465,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 149.78,
+      "latency_ms": 199.7,
       "validation_error": ""
     },
     {
@@ -4819,7 +4805,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 169.81,
+      "latency_ms": 231.24,
       "validation_error": ""
     },
     {
@@ -5584,7 +5570,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 130.81,
+      "latency_ms": 183.83,
       "validation_error": ""
     },
     {
@@ -5789,7 +5775,7 @@
       "location": "韩国",
       "is_valid": false,
       "latency_ms": null,
-      "validation_error": "Timeout"
+      "validation_error": "Refused"
     },
     {
       "address": "47.83.238.234:1080",
@@ -5823,7 +5809,7 @@
       "location": "韩国",
       "is_valid": false,
       "latency_ms": null,
-      "validation_error": "Timeout"
+      "validation_error": "Refused"
     },
     {
       "address": "47.83.240.38:1080",
@@ -5857,7 +5843,7 @@
       "location": "韩国",
       "is_valid": false,
       "latency_ms": null,
-      "validation_error": "Timeout"
+      "validation_error": "Refused"
     },
     {
       "address": "47.83.243.220:1080",
@@ -6281,7 +6267,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 154.19,
+      "latency_ms": 200.99,
       "validation_error": ""
     },
     {
@@ -6502,7 +6488,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 149.16,
+      "latency_ms": 217.0,
       "validation_error": ""
     },
     {
@@ -6519,7 +6505,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 149.83,
+      "latency_ms": 210.02,
       "validation_error": ""
     },
     {
@@ -6570,7 +6556,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 155.57,
+      "latency_ms": 198.67,
       "validation_error": ""
     },
     {
@@ -6587,7 +6573,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 208.46,
+      "latency_ms": 252.15,
       "validation_error": ""
     },
     {
@@ -6621,7 +6607,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 187.82,
+      "latency_ms": 241.24,
       "validation_error": ""
     },
     {
@@ -6672,7 +6658,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 176.11,
+      "latency_ms": 220.37,
       "validation_error": ""
     },
     {
@@ -6995,7 +6981,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 153.01,
+      "latency_ms": 201.4,
       "validation_error": ""
     },
     {
@@ -7301,7 +7287,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 147.21,
+      "latency_ms": 233.69,
       "validation_error": ""
     },
     {
@@ -7454,7 +7440,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 152.3,
+      "latency_ms": 234.71,
       "validation_error": ""
     },
     {
@@ -7675,7 +7661,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 154.84,
+      "latency_ms": 226.02,
       "validation_error": ""
     },
     {
@@ -8151,7 +8137,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 150.15,
+      "latency_ms": 201.19,
       "validation_error": ""
     },
     {
@@ -8474,7 +8460,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 149.53,
+      "latency_ms": 207.07,
       "validation_error": ""
     },
     {
@@ -8491,7 +8477,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 146.93,
+      "latency_ms": 233.94,
       "validation_error": ""
     },
     {
@@ -8610,7 +8596,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 155.25,
+      "latency_ms": 209.58,
       "validation_error": ""
     },
     {
@@ -8678,7 +8664,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 151.61,
+      "latency_ms": 208.62,
       "validation_error": ""
     },
     {
@@ -8916,7 +8902,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 147.26,
+      "latency_ms": 235.34,
       "validation_error": ""
     },
     {
@@ -8984,7 +8970,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 240.1,
+      "latency_ms": 219.49,
       "validation_error": ""
     },
     {
@@ -9035,7 +9021,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 142.33,
+      "latency_ms": 75.03,
       "validation_error": ""
     },
     {
@@ -9052,7 +9038,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 151.05,
+      "latency_ms": 86.64,
       "validation_error": ""
     },
     {
@@ -9069,7 +9055,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 145.55,
+      "latency_ms": 75.02,
       "validation_error": ""
     },
     {
@@ -9086,7 +9072,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 149.4,
+      "latency_ms": 88.8,
       "validation_error": ""
     },
     {
@@ -9103,7 +9089,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 149.8,
+      "latency_ms": 87.27,
       "validation_error": ""
     },
     {
@@ -9137,7 +9123,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 155.12,
+      "latency_ms": 91.63,
       "validation_error": ""
     },
     {
@@ -9154,7 +9140,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 70.64,
+      "latency_ms": 2.95,
       "validation_error": ""
     },
     {
@@ -9171,7 +9157,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 198.32,
+      "latency_ms": 231.16,
       "validation_error": ""
     },
     {
@@ -9188,7 +9174,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 153.91,
+      "latency_ms": 87.48,
       "validation_error": ""
     },
     {
@@ -9222,7 +9208,24 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 143.49,
+      "latency_ms": 80.5,
+      "validation_error": ""
+    },
+    {
+      "address": "52.221.190.128:1080",
+      "ip": "52.221.190.128",
+      "port": 1080,
+      "source": "socks5-proxy",
+      "category": "socks5",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 236.6,
       "validation_error": ""
     },
     {
@@ -9239,7 +9242,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 156.13,
+      "latency_ms": 81.63,
       "validation_error": ""
     },
     {
@@ -9256,7 +9259,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 155.33,
+      "latency_ms": 93.42,
       "validation_error": ""
     },
     {
@@ -9290,7 +9293,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 19.77,
+      "latency_ms": 82.5,
       "validation_error": ""
     },
     {
@@ -9307,7 +9310,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 136.76,
+      "latency_ms": 76.87,
       "validation_error": ""
     },
     {
@@ -9323,9 +9326,9 @@
       "net_type": "",
       "net_type_en": "unknown",
       "location": "",
-      "is_valid": true,
-      "latency_ms": 107.94,
-      "validation_error": ""
+      "is_valid": false,
+      "latency_ms": null,
+      "validation_error": "Timeout"
     },
     {
       "address": "64.201.141.139:443",
@@ -9358,7 +9361,24 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 172.55,
+      "latency_ms": 113.8,
+      "validation_error": ""
+    },
+    {
+      "address": "65.109.128.96:1080",
+      "ip": "65.109.128.96",
+      "port": 1080,
+      "source": "socks5-proxy",
+      "category": "socks5",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 114.14,
       "validation_error": ""
     },
     {
@@ -9375,7 +9395,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 73.81,
+      "latency_ms": 14.44,
       "validation_error": ""
     },
     {
@@ -9392,7 +9412,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 40.47,
+      "latency_ms": 32.74,
       "validation_error": ""
     },
     {
@@ -9408,9 +9428,9 @@
       "net_type": "",
       "net_type_en": "unknown",
       "location": "",
-      "is_valid": true,
-      "latency_ms": 238.21,
-      "validation_error": ""
+      "is_valid": false,
+      "latency_ms": null,
+      "validation_error": "Timeout"
     },
     {
       "address": "70.90.108.180:443",
@@ -9511,7 +9531,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 73.06,
+      "latency_ms": 11.41,
       "validation_error": ""
     },
     {
@@ -9528,7 +9548,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 73.18,
+      "latency_ms": 13.37,
       "validation_error": ""
     },
     {
@@ -9545,7 +9565,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 77.53,
+      "latency_ms": 31.47,
       "validation_error": ""
     },
     {
@@ -9579,7 +9599,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 60.84,
+      "latency_ms": 30.0,
       "validation_error": ""
     },
     {
@@ -9596,7 +9616,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 59.05,
+      "latency_ms": 30.27,
       "validation_error": ""
     },
     {
@@ -9613,7 +9633,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 167.0,
+      "latency_ms": 108.07,
       "validation_error": ""
     },
     {
@@ -9630,7 +9650,24 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 177.77,
+      "latency_ms": 120.95,
+      "validation_error": ""
+    },
+    {
+      "address": "77.239.112.12:1080",
+      "ip": "77.239.112.12",
+      "port": 1080,
+      "source": "socks5-proxy",
+      "category": "socks5",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 87.96,
       "validation_error": ""
     },
     {
@@ -9647,7 +9684,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 154.22,
+      "latency_ms": 97.85,
       "validation_error": ""
     },
     {
@@ -9681,7 +9718,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 156.91,
+      "latency_ms": 98.13,
       "validation_error": ""
     },
     {
@@ -9698,7 +9735,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 162.53,
+      "latency_ms": 98.19,
       "validation_error": ""
     },
     {
@@ -9715,7 +9752,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 156.98,
+      "latency_ms": 98.04,
       "validation_error": ""
     },
     {
@@ -9732,7 +9769,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 157.37,
+      "latency_ms": 98.62,
       "validation_error": ""
     },
     {
@@ -9749,7 +9786,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 178.68,
+      "latency_ms": 110.15,
       "validation_error": ""
     },
     {
@@ -9766,7 +9803,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 253.97,
+      "latency_ms": 121.06,
       "validation_error": ""
     },
     {
@@ -9783,7 +9820,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 264.51,
+      "latency_ms": 120.95,
       "validation_error": ""
     },
     {
@@ -9800,7 +9837,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 252.89,
+      "latency_ms": 120.53,
       "validation_error": ""
     },
     {
@@ -9817,7 +9854,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 269.9,
+      "latency_ms": 122.95,
       "validation_error": ""
     },
     {
@@ -9834,7 +9871,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 257.51,
+      "latency_ms": 120.79,
       "validation_error": ""
     },
     {
@@ -9851,7 +9888,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 263.05,
+      "latency_ms": 120.15,
       "validation_error": ""
     },
     {
@@ -9868,7 +9905,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 262.52,
+      "latency_ms": 127.23,
       "validation_error": ""
     },
     {
@@ -9885,7 +9922,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 256.9,
+      "latency_ms": 126.77,
       "validation_error": ""
     },
     {
@@ -9906,23 +9943,6 @@
       "validation_error": "Timeout"
     },
     {
-      "address": "80.65.30.8:1080",
-      "ip": "80.65.30.8",
-      "port": 1080,
-      "source": "socks5-proxy",
-      "category": "socks5",
-      "country": "",
-      "region": "",
-      "city": "",
-      "isp": "",
-      "net_type": "",
-      "net_type_en": "unknown",
-      "location": "",
-      "is_valid": false,
-      "latency_ms": null,
-      "validation_error": "Timeout"
-    },
-    {
       "address": "80.72.39.35:443",
       "ip": "80.72.39.35",
       "port": 443,
@@ -9936,7 +9956,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 156.98,
+      "latency_ms": 98.85,
       "validation_error": ""
     },
     {
@@ -9953,7 +9973,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 164.99,
+      "latency_ms": 111.81,
       "validation_error": ""
     },
     {
@@ -9970,7 +9990,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 199.38,
+      "latency_ms": 129.9,
       "validation_error": ""
     },
     {
@@ -10004,7 +10024,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 198.94,
+      "latency_ms": 128.9,
       "validation_error": ""
     },
     {
@@ -10021,7 +10041,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 202.03,
+      "latency_ms": 126.43,
       "validation_error": ""
     },
     {
@@ -10055,7 +10075,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 142.84,
+      "latency_ms": 81.96,
       "validation_error": ""
     },
     {
@@ -10072,7 +10092,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 169.44,
+      "latency_ms": 102.11,
       "validation_error": ""
     },
     {
@@ -10106,7 +10126,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 149.87,
+      "latency_ms": 97.25,
       "validation_error": ""
     },
     {
@@ -10123,7 +10143,24 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 185.23,
+      "latency_ms": 127.7,
+      "validation_error": ""
+    },
+    {
+      "address": "83.97.79.114:8443",
+      "ip": "83.97.79.114",
+      "port": 8443,
+      "source": "socks5-proxy",
+      "category": "socks5",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 1124.76,
       "validation_error": ""
     },
     {
@@ -10140,7 +10177,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 162.32,
+      "latency_ms": 100.38,
       "validation_error": ""
     },
     {
@@ -10157,7 +10194,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 168.08,
+      "latency_ms": 102.64,
       "validation_error": ""
     },
     {
@@ -10208,7 +10245,24 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 198.02,
+      "latency_ms": 130.14,
+      "validation_error": ""
+    },
+    {
+      "address": "85.190.99.143:443",
+      "ip": "85.190.99.143",
+      "port": 443,
+      "source": "socks5-proxy",
+      "category": "socks5",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 99.91,
       "validation_error": ""
     },
     {
@@ -10225,7 +10279,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 166.7,
+      "latency_ms": 103.31,
       "validation_error": ""
     },
     {
@@ -10259,7 +10313,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 147.77,
+      "latency_ms": 83.32,
       "validation_error": ""
     },
     {
@@ -10276,7 +10330,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 171.89,
+      "latency_ms": 109.67,
       "validation_error": ""
     },
     {
@@ -10293,7 +10347,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 194.08,
+      "latency_ms": 125.75,
       "validation_error": ""
     },
     {
@@ -10310,7 +10364,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 195.04,
+      "latency_ms": 126.48,
       "validation_error": ""
     },
     {
@@ -10327,7 +10381,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 68.08,
+      "latency_ms": 8.67,
       "validation_error": ""
     },
     {
@@ -10344,7 +10398,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 149.31,
+      "latency_ms": 94.82,
       "validation_error": ""
     },
     {
@@ -10378,7 +10432,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 160.82,
+      "latency_ms": 99.36,
       "validation_error": ""
     },
     {
@@ -10395,7 +10449,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 154.39,
+      "latency_ms": 100.33,
       "validation_error": ""
     },
     {
@@ -10412,7 +10466,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 189.22,
+      "latency_ms": 125.01,
       "validation_error": ""
     },
     {
@@ -10429,7 +10483,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 164.83,
+      "latency_ms": 115.08,
       "validation_error": ""
     },
     {
@@ -10446,7 +10500,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 173.38,
+      "latency_ms": 118.54,
       "validation_error": ""
     },
     {
@@ -10484,23 +10538,6 @@
       "validation_error": "Timeout"
     },
     {
-      "address": "94.232.42.157:1080",
-      "ip": "94.232.42.157",
-      "port": 1080,
-      "source": "socks5-proxy",
-      "category": "socks5",
-      "country": "",
-      "region": "",
-      "city": "",
-      "isp": "",
-      "net_type": "",
-      "net_type_en": "unknown",
-      "location": "",
-      "is_valid": false,
-      "latency_ms": null,
-      "validation_error": "Refused"
-    },
-    {
       "address": "94.246.130.82:443",
       "ip": "94.246.130.82",
       "port": 443,
@@ -10514,7 +10551,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 353.58,
+      "latency_ms": 257.41,
       "validation_error": ""
     },
     {
@@ -10531,7 +10568,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 353.43,
+      "latency_ms": 246.77,
       "validation_error": ""
     },
     {
@@ -10548,7 +10585,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 190.93,
+      "latency_ms": 123.96,
       "validation_error": ""
     },
     {
@@ -10569,23 +10606,6 @@
       "validation_error": "Timeout"
     },
     {
-      "address": "95.67.223.108:1080",
-      "ip": "95.67.223.108",
-      "port": 1080,
-      "source": "socks5-proxy",
-      "category": "socks5",
-      "country": "",
-      "region": "",
-      "city": "",
-      "isp": "",
-      "net_type": "",
-      "net_type_en": "unknown",
-      "location": "",
-      "is_valid": false,
-      "latency_ms": null,
-      "validation_error": "Timeout"
-    },
-    {
       "address": "95.104.231.79:443",
       "ip": "95.104.231.79",
       "port": 443,
@@ -10599,7 +10619,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 247.12,
+      "latency_ms": 154.25,
       "validation_error": ""
     },
     {
@@ -10616,7 +10636,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 149.62,
+      "latency_ms": 92.14,
       "validation_error": ""
     },
     {
@@ -10633,7 +10653,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 153.87,
+      "latency_ms": 93.17,
       "validation_error": ""
     },
     {
@@ -10650,42 +10670,8 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 202.23,
+      "latency_ms": 131.4,
       "validation_error": ""
-    },
-    {
-      "address": "95.165.107.186:1080",
-      "ip": "95.165.107.186",
-      "port": 1080,
-      "source": "socks5-proxy",
-      "category": "socks5",
-      "country": "",
-      "region": "",
-      "city": "",
-      "isp": "",
-      "net_type": "",
-      "net_type_en": "unknown",
-      "location": "",
-      "is_valid": false,
-      "latency_ms": null,
-      "validation_error": "Timeout"
-    },
-    {
-      "address": "95.165.140.23:1080",
-      "ip": "95.165.140.23",
-      "port": 1080,
-      "source": "socks5-proxy",
-      "category": "socks5",
-      "country": "",
-      "region": "",
-      "city": "",
-      "isp": "",
-      "net_type": "",
-      "net_type_en": "unknown",
-      "location": "",
-      "is_valid": false,
-      "latency_ms": null,
-      "validation_error": "Refused"
     },
     {
       "address": "95.183.53.35:443",
@@ -10718,7 +10704,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 190.21,
+      "latency_ms": 117.64,
       "validation_error": ""
     },
     {
@@ -10735,7 +10721,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 1194.51,
+      "latency_ms": 1146.1,
       "validation_error": ""
     },
     {
@@ -10752,7 +10738,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 179.22,
+      "latency_ms": 113.88,
       "validation_error": ""
     },
     {
@@ -10769,7 +10755,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 176.26,
+      "latency_ms": 101.64,
       "validation_error": ""
     },
     {
@@ -10786,7 +10772,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 72.59,
+      "latency_ms": 13.48,
       "validation_error": ""
     },
     {
@@ -10820,7 +10806,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 127.87,
+      "latency_ms": 184.12,
       "validation_error": ""
     },
     {
@@ -10990,7 +10976,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 234.75,
+      "latency_ms": 201.89,
       "validation_error": ""
     },
     {
@@ -11007,7 +10993,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 168.29,
+      "latency_ms": 233.67,
       "validation_error": ""
     },
     {
@@ -11024,7 +11010,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 115.78,
+      "latency_ms": 171.89,
       "validation_error": ""
     },
     {
@@ -11058,7 +11044,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 1257.7,
+      "latency_ms": 225.73,
       "validation_error": ""
     },
     {
@@ -11113,6 +11099,159 @@
       "validation_error": "Timeout"
     },
     {
+      "address": "104.16.152.29:443",
+      "ip": "104.16.152.29",
+      "port": 443,
+      "source": "bestcf",
+      "category": "proxy",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 4.47,
+      "validation_error": ""
+    },
+    {
+      "address": "104.16.154.147:443",
+      "ip": "104.16.154.147",
+      "port": 443,
+      "source": "bestcf",
+      "category": "proxy",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 2.5,
+      "validation_error": ""
+    },
+    {
+      "address": "104.17.48.61:443",
+      "ip": "104.17.48.61",
+      "port": 443,
+      "source": "bestcf",
+      "category": "proxy",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 2.93,
+      "validation_error": ""
+    },
+    {
+      "address": "104.17.59.253:443",
+      "ip": "104.17.59.253",
+      "port": 443,
+      "source": "bestcf",
+      "category": "proxy",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 2.51,
+      "validation_error": ""
+    },
+    {
+      "address": "104.17.99.109:443",
+      "ip": "104.17.99.109",
+      "port": 443,
+      "source": "bestcf",
+      "category": "proxy",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 2.05,
+      "validation_error": ""
+    },
+    {
+      "address": "104.17.219.54:443",
+      "ip": "104.17.219.54",
+      "port": 443,
+      "source": "bestcf",
+      "category": "proxy",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 2.11,
+      "validation_error": ""
+    },
+    {
+      "address": "104.19.149.228:443",
+      "ip": "104.19.149.228",
+      "port": 443,
+      "source": "bestcf",
+      "category": "proxy",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 2.46,
+      "validation_error": ""
+    },
+    {
+      "address": "104.19.156.131:443",
+      "ip": "104.19.156.131",
+      "port": 443,
+      "source": "bestcf",
+      "category": "proxy",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 2.83,
+      "validation_error": ""
+    },
+    {
+      "address": "104.19.159.34:443",
+      "ip": "104.19.159.34",
+      "port": 443,
+      "source": "bestcf",
+      "category": "proxy",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 6.35,
+      "validation_error": ""
+    },
+    {
       "address": "104.130.142.41:443",
       "ip": "104.130.142.41",
       "port": 443,
@@ -11160,7 +11299,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 76.71,
+      "latency_ms": 7.75,
       "validation_error": ""
     },
     {
@@ -11177,7 +11316,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 78.31,
+      "latency_ms": 7.82,
       "validation_error": ""
     },
     {
@@ -11194,7 +11333,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 80.49,
+      "latency_ms": 7.93,
       "validation_error": ""
     },
     {
@@ -11211,7 +11350,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 188.99,
+      "latency_ms": 246.11,
       "validation_error": ""
     },
     {
@@ -11262,7 +11401,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 217.73,
+      "latency_ms": 261.47,
       "validation_error": ""
     },
     {
@@ -19949,7 +20088,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 69.69,
+      "latency_ms": 35.69,
       "validation_error": ""
     },
     {
@@ -19966,7 +20105,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.72,
+      "latency_ms": 1.88,
       "validation_error": ""
     },
     {
@@ -19982,9 +20121,9 @@
       "net_type": "",
       "net_type_en": "unknown",
       "location": "",
-      "is_valid": true,
-      "latency_ms": 1061.76,
-      "validation_error": ""
+      "is_valid": false,
+      "latency_ms": null,
+      "validation_error": "Timeout"
     },
     {
       "address": "109.70.24.168:443",
@@ -20000,7 +20139,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 193.9,
+      "latency_ms": 128.36,
       "validation_error": ""
     },
     {
@@ -20034,7 +20173,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 244.55,
+      "latency_ms": 240.45,
       "validation_error": ""
     },
     {
@@ -20051,25 +20190,8 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 238.56,
+      "latency_ms": 232.42,
       "validation_error": ""
-    },
-    {
-      "address": "114.41.147.125:1080",
-      "ip": "114.41.147.125",
-      "port": 1080,
-      "source": "socks5-proxy",
-      "category": "socks5",
-      "country": "",
-      "region": "",
-      "city": "",
-      "isp": "",
-      "net_type": "",
-      "net_type_en": "unknown",
-      "location": "",
-      "is_valid": false,
-      "latency_ms": null,
-      "validation_error": "Timeout"
     },
     {
       "address": "114.217.27.1:1080",
@@ -20187,7 +20309,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 154.33,
+      "latency_ms": 261.13,
       "validation_error": ""
     },
     {
@@ -20204,7 +20326,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 138.45,
+      "latency_ms": 195.97,
       "validation_error": ""
     },
     {
@@ -20255,7 +20377,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 208.32,
+      "latency_ms": 277.2,
       "validation_error": ""
     },
     {
@@ -20306,7 +20428,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 207.63,
+      "latency_ms": 283.82,
       "validation_error": ""
     },
     {
@@ -20323,7 +20445,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 212.51,
+      "latency_ms": 1331.07,
       "validation_error": ""
     },
     {
@@ -20340,7 +20462,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 214.57,
+      "latency_ms": 267.8,
       "validation_error": ""
     },
     {
@@ -20357,7 +20479,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 206.89,
+      "latency_ms": 256.72,
       "validation_error": ""
     },
     {
@@ -20374,7 +20496,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 231.22,
+      "latency_ms": 303.28,
       "validation_error": ""
     },
     {
@@ -20391,7 +20513,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 207.48,
+      "latency_ms": 263.5,
       "validation_error": ""
     },
     {
@@ -20408,7 +20530,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 223.02,
+      "latency_ms": 293.81,
       "validation_error": ""
     },
     {
@@ -20476,7 +20598,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 257.88,
+      "latency_ms": 354.7,
       "validation_error": ""
     },
     {
@@ -20492,9 +20614,9 @@
       "net_type": "",
       "net_type_en": "unknown",
       "location": "",
-      "is_valid": true,
-      "latency_ms": 1208.09,
-      "validation_error": ""
+      "is_valid": false,
+      "latency_ms": null,
+      "validation_error": "Timeout"
     },
     {
       "address": "123.56.142.154:443",
@@ -20510,7 +20632,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 207.96,
+      "latency_ms": 255.76,
       "validation_error": ""
     },
     {
@@ -20561,7 +20683,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 110.1,
+      "latency_ms": 157.1,
       "validation_error": ""
     },
     {
@@ -20748,7 +20870,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 71.77,
+      "latency_ms": 14.91,
       "validation_error": ""
     },
     {
@@ -20769,23 +20891,6 @@
       "validation_error": "Timeout"
     },
     {
-      "address": "128.127.144.214:1080",
-      "ip": "128.127.144.214",
-      "port": 1080,
-      "source": "socks5-proxy",
-      "category": "socks5",
-      "country": "",
-      "region": "",
-      "city": "",
-      "isp": "",
-      "net_type": "",
-      "net_type_en": "unknown",
-      "location": "",
-      "is_valid": false,
-      "latency_ms": null,
-      "validation_error": "Timeout"
-    },
-    {
       "address": "129.97.50.72:443",
       "ip": "129.97.50.72",
       "port": 443,
@@ -20799,7 +20904,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 60.68,
+      "latency_ms": 26.85,
       "validation_error": ""
     },
     {
@@ -20816,7 +20921,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 187.34,
+      "latency_ms": 115.83,
       "validation_error": ""
     },
     {
@@ -20833,7 +20938,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 277.32,
+      "latency_ms": 222.8,
       "validation_error": ""
     },
     {
@@ -20850,7 +20955,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 53.02,
+      "latency_ms": 25.95,
       "validation_error": ""
     },
     {
@@ -20901,7 +21006,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 138.79,
+      "latency_ms": 220.29,
       "validation_error": ""
     },
     {
@@ -20918,7 +21023,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 138.97,
+      "latency_ms": 210.19,
       "validation_error": ""
     },
     {
@@ -20935,7 +21040,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 138.79,
+      "latency_ms": 210.38,
       "validation_error": ""
     },
     {
@@ -20952,7 +21057,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 138.73,
+      "latency_ms": 214.46,
       "validation_error": ""
     },
     {
@@ -21037,7 +21142,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 177.3,
+      "latency_ms": 105.66,
       "validation_error": ""
     },
     {
@@ -21054,7 +21159,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 27.82,
+      "latency_ms": 54.09,
       "validation_error": ""
     },
     {
@@ -21071,7 +21176,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 147.35,
+      "latency_ms": 89.99,
       "validation_error": ""
     },
     {
@@ -21088,7 +21193,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 150.6,
+      "latency_ms": 89.87,
       "validation_error": ""
     },
     {
@@ -21105,7 +21210,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 66.66,
+      "latency_ms": 31.39,
       "validation_error": ""
     },
     {
@@ -21122,7 +21227,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 111.28,
+      "latency_ms": 169.21,
       "validation_error": ""
     },
     {
@@ -21139,7 +21244,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 121.98,
+      "latency_ms": 181.73,
       "validation_error": ""
     },
     {
@@ -21156,7 +21261,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 179.27,
+      "latency_ms": 120.01,
       "validation_error": ""
     },
     {
@@ -21173,7 +21278,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 176.68,
+      "latency_ms": 102.96,
       "validation_error": ""
     },
     {
@@ -21190,7 +21295,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 2.0,
+      "latency_ms": 68.16,
       "validation_error": ""
     },
     {
@@ -21224,7 +21329,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 164.94,
+      "latency_ms": 105.75,
       "validation_error": ""
     },
     {
@@ -21241,7 +21346,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 56.69,
+      "latency_ms": 28.13,
       "validation_error": ""
     },
     {
@@ -21258,7 +21363,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 73.25,
+      "latency_ms": 7.86,
       "validation_error": ""
     },
     {
@@ -21275,7 +21380,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 200.11,
+      "latency_ms": 250.18,
       "validation_error": ""
     },
     {
@@ -21309,7 +21414,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 272.4,
+      "latency_ms": 194.42,
       "validation_error": ""
     },
     {
@@ -21326,7 +21431,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 141.25,
+      "latency_ms": 85.44,
       "validation_error": ""
     },
     {
@@ -21343,7 +21448,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 152.65,
+      "latency_ms": 92.82,
       "validation_error": ""
     },
     {
@@ -21377,7 +21482,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 166.88,
+      "latency_ms": 99.73,
       "validation_error": ""
     },
     {
@@ -21394,7 +21499,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 171.77,
+      "latency_ms": 128.88,
       "validation_error": ""
     },
     {
@@ -21411,7 +21516,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 142.57,
+      "latency_ms": 78.42,
       "validation_error": ""
     },
     {
@@ -21428,7 +21533,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 83.34,
+      "latency_ms": 14.29,
       "validation_error": ""
     },
     {
@@ -21445,7 +21550,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 83.37,
+      "latency_ms": 14.56,
       "validation_error": ""
     },
     {
@@ -21462,7 +21567,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 77.79,
+      "latency_ms": 14.33,
       "validation_error": ""
     },
     {
@@ -21479,7 +21584,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 32.06,
+      "latency_ms": 68.35,
       "validation_error": ""
     },
     {
@@ -21496,7 +21601,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 1.88,
+      "latency_ms": 68.02,
       "validation_error": ""
     },
     {
@@ -21513,7 +21618,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 68.62,
+      "latency_ms": 78.46,
       "validation_error": ""
     },
     {
@@ -21530,7 +21635,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 71.71,
+      "latency_ms": 86.29,
       "validation_error": ""
     },
     {
@@ -21564,7 +21669,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 152.53,
+      "latency_ms": 87.58,
       "validation_error": ""
     },
     {
@@ -21581,7 +21686,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 146.16,
+      "latency_ms": 87.71,
       "validation_error": ""
     },
     {
@@ -21615,7 +21720,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 59.77,
+      "latency_ms": 2.03,
       "validation_error": ""
     },
     {
@@ -21632,7 +21737,24 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 61.79,
+      "latency_ms": 5.97,
+      "validation_error": ""
+    },
+    {
+      "address": "152.69.209.132:443",
+      "ip": "152.69.209.132",
+      "port": 443,
+      "source": "bestproxy",
+      "category": "proxy",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 228.18,
       "validation_error": ""
     },
     {
@@ -21649,7 +21771,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 61.72,
+      "latency_ms": 2.39,
       "validation_error": ""
     },
     {
@@ -21666,7 +21788,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 157.76,
+      "latency_ms": 96.46,
       "validation_error": ""
     },
     {
@@ -21683,7 +21805,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 284.99,
+      "latency_ms": 223.75,
       "validation_error": ""
     },
     {
@@ -21700,7 +21822,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 230.99,
+      "latency_ms": 289.05,
       "validation_error": ""
     },
     {
@@ -21717,7 +21839,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 150.52,
+      "latency_ms": 100.51,
       "validation_error": ""
     },
     {
@@ -21734,7 +21856,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 232.66,
+      "latency_ms": 217.21,
       "validation_error": ""
     },
     {
@@ -21751,7 +21873,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 171.87,
+      "latency_ms": 103.75,
       "validation_error": ""
     },
     {
@@ -21768,7 +21890,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 177.04,
+      "latency_ms": 107.54,
       "validation_error": ""
     },
     {
@@ -21801,9 +21923,9 @@
       "net_type": "",
       "net_type_en": "unknown",
       "location": "",
-      "is_valid": true,
-      "latency_ms": 2211.87,
-      "validation_error": ""
+      "is_valid": false,
+      "latency_ms": null,
+      "validation_error": "Timeout"
     },
     {
       "address": "158.247.212.189:1080",
@@ -21818,9 +21940,9 @@
       "net_type": "",
       "net_type_en": "unknown",
       "location": "",
-      "is_valid": true,
-      "latency_ms": 131.42,
-      "validation_error": ""
+      "is_valid": false,
+      "latency_ms": null,
+      "validation_error": "Timeout"
     },
     {
       "address": "159.13.66.216:443",
@@ -21870,7 +21992,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 60.44,
+      "latency_ms": 24.71,
       "validation_error": ""
     },
     {
@@ -21904,7 +22026,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 286.07,
+      "latency_ms": 223.75,
       "validation_error": ""
     },
     {
@@ -21921,7 +22043,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 287.3,
+      "latency_ms": 226.61,
       "validation_error": ""
     },
     {
@@ -21938,7 +22060,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 124.54,
+      "latency_ms": 183.3,
       "validation_error": ""
     },
     {
@@ -21955,7 +22077,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 146.44,
+      "latency_ms": 82.07,
       "validation_error": ""
     },
     {
@@ -21973,7 +22095,7 @@
       "location": "通用",
       "is_valid": false,
       "latency_ms": null,
-      "validation_error": "Timeout"
+      "validation_error": "Refused"
     },
     {
       "address": "161.117.15.35:51001",
@@ -22006,7 +22128,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 151.36,
+      "latency_ms": 95.32,
       "validation_error": ""
     },
     {
@@ -22023,7 +22145,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 2.21,
+      "latency_ms": 1.96,
       "validation_error": ""
     },
     {
@@ -22040,7 +22162,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 11.65,
+      "latency_ms": 4.75,
       "validation_error": ""
     },
     {
@@ -22057,7 +22179,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 9.57,
+      "latency_ms": 4.33,
       "validation_error": ""
     },
     {
@@ -22074,7 +22196,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.69,
+      "latency_ms": 1.96,
       "validation_error": ""
     },
     {
@@ -22091,7 +22213,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 8.48,
+      "latency_ms": 2.82,
       "validation_error": ""
     },
     {
@@ -22108,7 +22230,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 8.53,
+      "latency_ms": 3.91,
       "validation_error": ""
     },
     {
@@ -22125,7 +22247,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.57,
+      "latency_ms": 5.95,
       "validation_error": ""
     },
     {
@@ -22159,7 +22281,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 183.09,
+      "latency_ms": 120.09,
       "validation_error": ""
     },
     {
@@ -22176,7 +22298,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 332.47,
+      "latency_ms": 310.86,
       "validation_error": ""
     },
     {
@@ -22193,7 +22315,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 357.32,
+      "latency_ms": 326.14,
       "validation_error": ""
     },
     {
@@ -22210,7 +22332,24 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 169.38,
+      "latency_ms": 225.98,
+      "validation_error": ""
+    },
+    {
+      "address": "167.71.222.124:10001",
+      "ip": "167.71.222.124",
+      "port": 10001,
+      "source": "socks5-proxy",
+      "category": "socks5",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 223.12,
       "validation_error": ""
     },
     {
@@ -22227,7 +22366,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 179.34,
+      "latency_ms": 114.98,
       "validation_error": ""
     },
     {
@@ -22244,7 +22383,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 286.23,
+      "latency_ms": 244.59,
       "validation_error": ""
     },
     {
@@ -22261,7 +22400,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 61.33,
+      "latency_ms": 26.99,
       "validation_error": ""
     },
     {
@@ -22278,7 +22417,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 51.15,
+      "latency_ms": 29.8,
       "validation_error": ""
     },
     {
@@ -22295,7 +22434,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 38.32,
+      "latency_ms": 49.3,
       "validation_error": ""
     },
     {
@@ -22312,7 +22451,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 38.37,
+      "latency_ms": 46.37,
       "validation_error": ""
     },
     {
@@ -22329,7 +22468,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 38.37,
+      "latency_ms": 47.14,
       "validation_error": ""
     },
     {
@@ -22346,7 +22485,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 38.23,
+      "latency_ms": 29.88,
       "validation_error": ""
     },
     {
@@ -22363,7 +22502,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 51.66,
+      "latency_ms": 46.86,
       "validation_error": ""
     },
     {
@@ -22380,25 +22519,8 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 51.1,
+      "latency_ms": 49.24,
       "validation_error": ""
-    },
-    {
-      "address": "170.205.39.31:1080",
-      "ip": "170.205.39.31",
-      "port": 1080,
-      "source": "socks5-proxy",
-      "category": "socks5",
-      "country": "",
-      "region": "",
-      "city": "",
-      "isp": "",
-      "net_type": "",
-      "net_type_en": "unknown",
-      "location": "",
-      "is_valid": false,
-      "latency_ms": null,
-      "validation_error": "Refused"
     },
     {
       "address": "171.111.192.80:1080",
@@ -22414,7 +22536,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 199.66,
+      "latency_ms": 268.4,
       "validation_error": ""
     },
     {
@@ -22431,7 +22553,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 195.76,
+      "latency_ms": 290.03,
       "validation_error": ""
     },
     {
@@ -22448,7 +22570,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 199.26,
+      "latency_ms": 254.28,
       "validation_error": ""
     },
     {
@@ -22465,7 +22587,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 222.16,
+      "latency_ms": 275.79,
       "validation_error": ""
     },
     {
@@ -22482,7 +22604,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 228.54,
+      "latency_ms": 277.32,
       "validation_error": ""
     },
     {
@@ -22499,7 +22621,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 196.47,
+      "latency_ms": 290.75,
       "validation_error": ""
     },
     {
@@ -22516,7 +22638,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 219.66,
+      "latency_ms": 314.83,
       "validation_error": ""
     },
     {
@@ -22533,7 +22655,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 220.49,
+      "latency_ms": 334.41,
       "validation_error": ""
     },
     {
@@ -22550,7 +22672,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 220.38,
+      "latency_ms": 276.12,
       "validation_error": ""
     },
     {
@@ -22567,7 +22689,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 198.27,
+      "latency_ms": 263.83,
       "validation_error": ""
     },
     {
@@ -22584,7 +22706,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 225.21,
+      "latency_ms": 259.01,
       "validation_error": ""
     },
     {
@@ -22601,7 +22723,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 200.34,
+      "latency_ms": 274.74,
       "validation_error": ""
     },
     {
@@ -22618,7 +22740,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 220.07,
+      "latency_ms": 287.73,
       "validation_error": ""
     },
     {
@@ -22635,7 +22757,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 201.32,
+      "latency_ms": 253.98,
       "validation_error": ""
     },
     {
@@ -22652,7 +22774,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 224.05,
+      "latency_ms": 282.6,
       "validation_error": ""
     },
     {
@@ -22669,7 +22791,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 221.12,
+      "latency_ms": 245.81,
       "validation_error": ""
     },
     {
@@ -22686,7 +22808,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 220.77,
+      "latency_ms": 289.74,
       "validation_error": ""
     },
     {
@@ -22703,7 +22825,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 225.0,
+      "latency_ms": 249.76,
       "validation_error": ""
     },
     {
@@ -22720,7 +22842,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 216.17,
+      "latency_ms": 253.4,
       "validation_error": ""
     },
     {
@@ -22737,7 +22859,7 @@
       "net_type_en": "unknown",
       "location": "中国",
       "is_valid": true,
-      "latency_ms": 196.91,
+      "latency_ms": 270.2,
       "validation_error": ""
     },
     {
@@ -22754,7 +22876,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.56,
+      "latency_ms": 2.38,
       "validation_error": ""
     },
     {
@@ -22771,7 +22893,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.38,
+      "latency_ms": 2.51,
       "validation_error": ""
     },
     {
@@ -22788,7 +22910,24 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 2.13,
+      "latency_ms": 2.0,
+      "validation_error": ""
+    },
+    {
+      "address": "172.64.152.127:443",
+      "ip": "172.64.152.127",
+      "port": 443,
+      "source": "bestcf",
+      "category": "proxy",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 2.22,
       "validation_error": ""
     },
     {
@@ -22805,7 +22944,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.95,
+      "latency_ms": 2.11,
       "validation_error": ""
     },
     {
@@ -22822,7 +22961,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.55,
+      "latency_ms": 2.34,
       "validation_error": ""
     },
     {
@@ -22839,7 +22978,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.55,
+      "latency_ms": 2.4,
       "validation_error": ""
     },
     {
@@ -22856,7 +22995,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 1.56,
+      "latency_ms": 1.93,
       "validation_error": ""
     },
     {
@@ -22873,7 +23012,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.3,
+      "latency_ms": 1.96,
       "validation_error": ""
     },
     {
@@ -22890,7 +23029,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.71,
+      "latency_ms": 2.23,
       "validation_error": ""
     },
     {
@@ -22907,7 +23046,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.53,
+      "latency_ms": 1.8,
       "validation_error": ""
     },
     {
@@ -22924,7 +23063,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.47,
+      "latency_ms": 2.43,
       "validation_error": ""
     },
     {
@@ -22941,7 +23080,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.67,
+      "latency_ms": 2.3,
       "validation_error": ""
     },
     {
@@ -22958,7 +23097,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.66,
+      "latency_ms": 2.03,
       "validation_error": ""
     },
     {
@@ -22975,7 +23114,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.5,
+      "latency_ms": 2.48,
       "validation_error": ""
     },
     {
@@ -22992,7 +23131,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.5,
+      "latency_ms": 2.03,
       "validation_error": ""
     },
     {
@@ -23009,7 +23148,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 2.19,
+      "latency_ms": 2.47,
       "validation_error": ""
     },
     {
@@ -23026,7 +23165,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.73,
+      "latency_ms": 2.11,
       "validation_error": ""
     },
     {
@@ -23043,7 +23182,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.55,
+      "latency_ms": 2.17,
       "validation_error": ""
     },
     {
@@ -23060,7 +23199,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.69,
+      "latency_ms": 1.79,
       "validation_error": ""
     },
     {
@@ -23077,7 +23216,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.53,
+      "latency_ms": 2.0,
       "validation_error": ""
     },
     {
@@ -23094,7 +23233,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.7,
+      "latency_ms": 2.18,
       "validation_error": ""
     },
     {
@@ -23111,7 +23250,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.46,
+      "latency_ms": 1.8,
       "validation_error": ""
     },
     {
@@ -23128,7 +23267,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.58,
+      "latency_ms": 1.92,
       "validation_error": ""
     },
     {
@@ -23145,7 +23284,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.61,
+      "latency_ms": 2.03,
       "validation_error": ""
     },
     {
@@ -23162,7 +23301,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.55,
+      "latency_ms": 2.25,
       "validation_error": ""
     },
     {
@@ -23179,7 +23318,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.79,
+      "latency_ms": 2.28,
       "validation_error": ""
     },
     {
@@ -23196,7 +23335,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.5,
+      "latency_ms": 2.21,
       "validation_error": ""
     },
     {
@@ -23213,7 +23352,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.54,
+      "latency_ms": 2.57,
       "validation_error": ""
     },
     {
@@ -23230,7 +23369,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.68,
+      "latency_ms": 2.04,
       "validation_error": ""
     },
     {
@@ -23247,7 +23386,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.61,
+      "latency_ms": 2.39,
       "validation_error": ""
     },
     {
@@ -23264,7 +23403,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.67,
+      "latency_ms": 3.15,
       "validation_error": ""
     },
     {
@@ -23281,7 +23420,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.54,
+      "latency_ms": 2.27,
       "validation_error": ""
     },
     {
@@ -23298,7 +23437,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.65,
+      "latency_ms": 1.86,
       "validation_error": ""
     },
     {
@@ -23315,7 +23454,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.61,
+      "latency_ms": 2.01,
       "validation_error": ""
     },
     {
@@ -23332,7 +23471,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.7,
+      "latency_ms": 2.28,
       "validation_error": ""
     },
     {
@@ -23349,7 +23488,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.62,
+      "latency_ms": 2.52,
       "validation_error": ""
     },
     {
@@ -23366,7 +23505,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.55,
+      "latency_ms": 2.28,
       "validation_error": ""
     },
     {
@@ -23383,7 +23522,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.62,
+      "latency_ms": 1.73,
       "validation_error": ""
     },
     {
@@ -23400,7 +23539,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.59,
+      "latency_ms": 1.91,
       "validation_error": ""
     },
     {
@@ -23417,7 +23556,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.7,
+      "latency_ms": 2.58,
       "validation_error": ""
     },
     {
@@ -23434,7 +23573,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.55,
+      "latency_ms": 2.11,
       "validation_error": ""
     },
     {
@@ -23451,7 +23590,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.64,
+      "latency_ms": 2.04,
       "validation_error": ""
     },
     {
@@ -23468,7 +23607,7 @@
       "net_type_en": "unknown",
       "location": "韩国",
       "is_valid": true,
-      "latency_ms": 1.63,
+      "latency_ms": 2.13,
       "validation_error": ""
     },
     {
@@ -23485,7 +23624,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.64,
+      "latency_ms": 2.3,
       "validation_error": ""
     },
     {
@@ -23502,7 +23641,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.51,
+      "latency_ms": 2.69,
       "validation_error": ""
     },
     {
@@ -23519,7 +23658,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.73,
+      "latency_ms": 2.2,
       "validation_error": ""
     },
     {
@@ -23536,7 +23675,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.72,
+      "latency_ms": 1.64,
       "validation_error": ""
     },
     {
@@ -23553,7 +23692,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.69,
+      "latency_ms": 2.06,
       "validation_error": ""
     },
     {
@@ -23570,7 +23709,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.48,
+      "latency_ms": 2.11,
       "validation_error": ""
     },
     {
@@ -23587,7 +23726,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.62,
+      "latency_ms": 2.21,
       "validation_error": ""
     },
     {
@@ -23604,7 +23743,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 1.69,
+      "latency_ms": 2.29,
       "validation_error": ""
     },
     {
@@ -23655,7 +23794,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 194.07,
+      "latency_ms": 120.77,
       "validation_error": ""
     },
     {
@@ -23672,7 +23811,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 114.84,
+      "latency_ms": 174.2,
       "validation_error": ""
     },
     {
@@ -23689,7 +23828,24 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 163.52,
+      "latency_ms": 101.42,
+      "validation_error": ""
+    },
+    {
+      "address": "176.115.200.68:1080",
+      "ip": "176.115.200.68",
+      "port": 1080,
+      "source": "socks5-proxy",
+      "category": "socks5",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 123.41,
       "validation_error": ""
     },
     {
@@ -23723,7 +23879,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 148.52,
+      "latency_ms": 90.6,
       "validation_error": ""
     },
     {
@@ -23740,7 +23896,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 174.68,
+      "latency_ms": 100.06,
       "validation_error": ""
     },
     {
@@ -23757,7 +23913,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 172.33,
+      "latency_ms": 98.94,
       "validation_error": ""
     },
     {
@@ -23774,7 +23930,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 186.67,
+      "latency_ms": 121.56,
       "validation_error": ""
     },
     {
@@ -23791,7 +23947,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 162.07,
+      "latency_ms": 94.19,
       "validation_error": ""
     },
     {
@@ -23808,7 +23964,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 204.64,
+      "latency_ms": 248.23,
       "validation_error": ""
     },
     {
@@ -23978,7 +24134,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 212.19,
+      "latency_ms": 159.5,
       "validation_error": ""
     },
     {
@@ -23995,7 +24151,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 188.6,
+      "latency_ms": 115.33,
       "validation_error": ""
     },
     {
@@ -24097,7 +24253,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 167.49,
+      "latency_ms": 112.33,
       "validation_error": ""
     },
     {
@@ -24114,8 +24270,25 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 191.69,
+      "latency_ms": 136.78,
       "validation_error": ""
+    },
+    {
+      "address": "185.49.110.155:1080",
+      "ip": "185.49.110.155",
+      "port": 1080,
+      "source": "socks5-proxy",
+      "category": "socks5",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": false,
+      "latency_ms": null,
+      "validation_error": "Timeout"
     },
     {
       "address": "185.96.121.243:9443",
@@ -24131,7 +24304,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 165.78,
+      "latency_ms": 107.77,
       "validation_error": ""
     },
     {
@@ -24148,7 +24321,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 179.82,
+      "latency_ms": 121.93,
       "validation_error": ""
     },
     {
@@ -24169,9 +24342,9 @@
       "validation_error": "Timeout"
     },
     {
-      "address": "185.214.108.23:40000",
-      "ip": "185.214.108.23",
-      "port": 40000,
+      "address": "185.192.247.71:1080",
+      "ip": "185.192.247.71",
+      "port": 1080,
       "source": "socks5-proxy",
       "category": "socks5",
       "country": "",
@@ -24181,26 +24354,9 @@
       "net_type": "",
       "net_type_en": "unknown",
       "location": "",
-      "is_valid": false,
-      "latency_ms": null,
-      "validation_error": "Timeout"
-    },
-    {
-      "address": "185.214.108.46:40000",
-      "ip": "185.214.108.46",
-      "port": 40000,
-      "source": "socks5-proxy",
-      "category": "socks5",
-      "country": "",
-      "region": "",
-      "city": "",
-      "isp": "",
-      "net_type": "",
-      "net_type_en": "unknown",
-      "location": "",
-      "is_valid": false,
-      "latency_ms": null,
-      "validation_error": "Timeout"
+      "is_valid": true,
+      "latency_ms": 114.52,
+      "validation_error": ""
     },
     {
       "address": "185.245.136.61:443",
@@ -24216,7 +24372,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 142.24,
+      "latency_ms": 85.11,
       "validation_error": ""
     },
     {
@@ -24233,7 +24389,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 140.9,
+      "latency_ms": 87.47,
       "validation_error": ""
     },
     {
@@ -24267,8 +24423,25 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 65.22,
+      "latency_ms": 67.39,
       "validation_error": ""
+    },
+    {
+      "address": "188.18.15.96:1080",
+      "ip": "188.18.15.96",
+      "port": 1080,
+      "source": "socks5-proxy",
+      "category": "socks5",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": false,
+      "latency_ms": null,
+      "validation_error": "Refused"
     },
     {
       "address": "188.149.123.87:8181",
@@ -24318,7 +24491,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 173.77,
+      "latency_ms": 127.87,
       "validation_error": ""
     },
     {
@@ -24335,7 +24508,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 189.18,
+      "latency_ms": 138.44,
       "validation_error": ""
     },
     {
@@ -24369,7 +24542,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 117.01,
+      "latency_ms": 83.97,
       "validation_error": ""
     },
     {
@@ -24386,7 +24559,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 113.88,
+      "latency_ms": 76.41,
       "validation_error": ""
     },
     {
@@ -24420,7 +24593,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 94.73,
+      "latency_ms": 54.41,
       "validation_error": ""
     },
     {
@@ -24454,7 +24627,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 69.52,
+      "latency_ms": 14.91,
       "validation_error": ""
     },
     {
@@ -24471,7 +24644,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 67.58,
+      "latency_ms": 6.93,
       "validation_error": ""
     },
     {
@@ -24488,7 +24661,7 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 2210.42,
+      "latency_ms": 2177.82,
       "validation_error": ""
     },
     {
@@ -24505,7 +24678,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 41.19,
+      "latency_ms": 34.39,
       "validation_error": ""
     },
     {
@@ -24522,7 +24695,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 218.06,
+      "latency_ms": 268.71,
       "validation_error": ""
     },
     {
@@ -24539,7 +24712,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 180.09,
+      "latency_ms": 120.51,
       "validation_error": ""
     },
     {
@@ -24556,7 +24729,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 139.3,
+      "latency_ms": 88.18,
       "validation_error": ""
     },
     {
@@ -24573,7 +24746,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 158.23,
+      "latency_ms": 88.89,
       "validation_error": ""
     },
     {
@@ -24590,7 +24763,24 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 162.47,
+      "latency_ms": 99.88,
+      "validation_error": ""
+    },
+    {
+      "address": "193.84.71.242:1080",
+      "ip": "193.84.71.242",
+      "port": 1080,
+      "source": "socks5-proxy",
+      "category": "socks5",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 171.37,
       "validation_error": ""
     },
     {
@@ -24607,7 +24797,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 143.92,
+      "latency_ms": 91.14,
       "validation_error": ""
     },
     {
@@ -24624,7 +24814,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 148.11,
+      "latency_ms": 93.53,
       "validation_error": ""
     },
     {
@@ -24641,7 +24831,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 169.14,
+      "latency_ms": 118.3,
       "validation_error": ""
     },
     {
@@ -24658,7 +24848,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 172.03,
+      "latency_ms": 106.18,
       "validation_error": ""
     },
     {
@@ -24676,7 +24866,7 @@
       "location": "通用",
       "is_valid": false,
       "latency_ms": null,
-      "validation_error": "Timeout"
+      "validation_error": "Refused"
     },
     {
       "address": "194.87.98.70:443",
@@ -24692,7 +24882,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 188.6,
+      "latency_ms": 122.5,
       "validation_error": ""
     },
     {
@@ -24709,7 +24899,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 147.91,
+      "latency_ms": 87.63,
       "validation_error": ""
     },
     {
@@ -24726,7 +24916,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 145.82,
+      "latency_ms": 90.04,
       "validation_error": ""
     },
     {
@@ -24743,7 +24933,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 150.73,
+      "latency_ms": 83.48,
       "validation_error": ""
     },
     {
@@ -24760,7 +24950,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 178.8,
+      "latency_ms": 113.59,
       "validation_error": ""
     },
     {
@@ -24777,7 +24967,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 157.87,
+      "latency_ms": 104.7,
       "validation_error": ""
     },
     {
@@ -24811,7 +25001,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 157.25,
+      "latency_ms": 88.91,
       "validation_error": ""
     },
     {
@@ -24828,7 +25018,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 173.9,
+      "latency_ms": 103.28,
       "validation_error": ""
     },
     {
@@ -24845,7 +25035,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 171.13,
+      "latency_ms": 114.5,
       "validation_error": ""
     },
     {
@@ -24862,7 +25052,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 181.98,
+      "latency_ms": 109.01,
       "validation_error": ""
     },
     {
@@ -24879,7 +25069,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 165.47,
+      "latency_ms": 104.54,
       "validation_error": ""
     },
     {
@@ -24896,7 +25086,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 165.81,
+      "latency_ms": 103.84,
       "validation_error": ""
     },
     {
@@ -24930,7 +25120,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 284.29,
+      "latency_ms": 229.71,
       "validation_error": ""
     },
     {
@@ -24947,7 +25137,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 283.67,
+      "latency_ms": 230.81,
       "validation_error": ""
     },
     {
@@ -24964,7 +25154,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 279.29,
+      "latency_ms": 225.38,
       "validation_error": ""
     },
     {
@@ -24981,7 +25171,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 259.09,
+      "latency_ms": 205.78,
       "validation_error": ""
     },
     {
@@ -24998,7 +25188,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 58.24,
+      "latency_ms": 31.28,
       "validation_error": ""
     },
     {
@@ -25015,7 +25205,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 165.08,
+      "latency_ms": 121.67,
       "validation_error": ""
     },
     {
@@ -25032,7 +25222,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 185.01,
+      "latency_ms": 136.83,
       "validation_error": ""
     },
     {
@@ -25049,7 +25239,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 365.4,
+      "latency_ms": 134.26,
       "validation_error": ""
     },
     {
@@ -25066,7 +25256,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 168.26,
+      "latency_ms": 119.19,
       "validation_error": ""
     },
     {
@@ -25083,7 +25273,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 112.22,
+      "latency_ms": 168.18,
       "validation_error": ""
     },
     {
@@ -25100,7 +25290,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 181.59,
+      "latency_ms": 226.98,
       "validation_error": ""
     },
     {
@@ -25117,7 +25307,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 171.63,
+      "latency_ms": 238.97,
       "validation_error": ""
     },
     {
@@ -25134,7 +25324,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 225.26,
+      "latency_ms": 285.45,
       "validation_error": ""
     },
     {
@@ -25151,7 +25341,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 136.99,
+      "latency_ms": 187.43,
       "validation_error": ""
     },
     {
@@ -25168,7 +25358,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 136.61,
+      "latency_ms": 202.2,
       "validation_error": ""
     },
     {
@@ -25185,7 +25375,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 60.99,
+      "latency_ms": 20.45,
       "validation_error": ""
     },
     {
@@ -25202,7 +25392,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 61.71,
+      "latency_ms": 20.54,
       "validation_error": ""
     },
     {
@@ -25219,7 +25409,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 66.19,
+      "latency_ms": 20.01,
       "validation_error": ""
     },
     {
@@ -25236,29 +25426,12 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 59.82,
+      "latency_ms": 15.97,
       "validation_error": ""
     },
     {
       "address": "206.123.156.207:9090",
       "ip": "206.123.156.207",
-      "port": 9090,
-      "source": "socks5-proxy",
-      "category": "socks5",
-      "country": "",
-      "region": "",
-      "city": "",
-      "isp": "",
-      "net_type": "",
-      "net_type_en": "unknown",
-      "location": "",
-      "is_valid": true,
-      "latency_ms": 2289.02,
-      "validation_error": ""
-    },
-    {
-      "address": "206.123.156.233:9090",
-      "ip": "206.123.156.233",
       "port": 9090,
       "source": "socks5-proxy",
       "category": "socks5",
@@ -25304,7 +25477,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 146.43,
+      "latency_ms": 89.42,
       "validation_error": ""
     },
     {
@@ -25321,7 +25494,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 88.9,
+      "latency_ms": 55.23,
       "validation_error": ""
     },
     {
@@ -25338,7 +25511,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 7.08,
+      "latency_ms": 77.2,
       "validation_error": ""
     },
     {
@@ -25355,7 +25528,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 188.05,
+      "latency_ms": 241.02,
       "validation_error": ""
     },
     {
@@ -25372,7 +25545,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 175.71,
+      "latency_ms": 234.17,
       "validation_error": ""
     },
     {
@@ -25389,7 +25562,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 251.77,
+      "latency_ms": 198.67,
       "validation_error": ""
     },
     {
@@ -25406,7 +25579,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 252.88,
+      "latency_ms": 193.99,
       "validation_error": ""
     },
     {
@@ -25457,7 +25630,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 180.06,
+      "latency_ms": 226.24,
       "validation_error": ""
     },
     {
@@ -25474,7 +25647,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 126.63,
+      "latency_ms": 183.91,
       "validation_error": ""
     },
     {
@@ -25508,7 +25681,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 157.85,
+      "latency_ms": 93.15,
       "validation_error": ""
     },
     {
@@ -25525,7 +25698,41 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 169.04,
+      "latency_ms": 103.4,
+      "validation_error": ""
+    },
+    {
+      "address": "213.165.38.234:1080",
+      "ip": "213.165.38.234",
+      "port": 1080,
+      "source": "socks5-proxy",
+      "category": "socks5",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 97.83,
+      "validation_error": ""
+    },
+    {
+      "address": "213.165.58.7:1080",
+      "ip": "213.165.58.7",
+      "port": 1080,
+      "source": "socks5-proxy",
+      "category": "socks5",
+      "country": "",
+      "region": "",
+      "city": "",
+      "isp": "",
+      "net_type": "",
+      "net_type_en": "unknown",
+      "location": "",
+      "is_valid": true,
+      "latency_ms": 120.03,
       "validation_error": ""
     },
     {
@@ -25542,7 +25749,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 168.87,
+      "latency_ms": 105.46,
       "validation_error": ""
     },
     {
@@ -25559,25 +25766,8 @@
       "net_type_en": "unknown",
       "location": "",
       "is_valid": true,
-      "latency_ms": 29.4,
+      "latency_ms": 56.06,
       "validation_error": ""
-    },
-    {
-      "address": "216.126.229.34:1080",
-      "ip": "216.126.229.34",
-      "port": 1080,
-      "source": "socks5-proxy",
-      "category": "socks5",
-      "country": "",
-      "region": "",
-      "city": "",
-      "isp": "",
-      "net_type": "",
-      "net_type_en": "unknown",
-      "location": "",
-      "is_valid": false,
-      "latency_ms": null,
-      "validation_error": "Refused"
     },
     {
       "address": "217.108.126.106:443",
@@ -25610,7 +25800,7 @@
       "net_type_en": "unknown",
       "location": "通用",
       "is_valid": true,
-      "latency_ms": 165.65,
+      "latency_ms": 109.69,
       "validation_error": ""
     },
     {
